@@ -13,17 +13,15 @@ Mark Down Parser
 >This *README.md* file is a manual for command.
 ************************************************************
 Java Command Line:
-  * -o: Output's name.
-  * -H: Showing Help menu
-  * -s: Output's style.
-  * -f: Format
-  
-  * -d: Directory
+   * -o: Output's name.
+   * -H: Showing Help menu
+   * -s: Output's style.
+   * -f: Format
+   * -d: Directory
 -------------
 mdconverter {Input files} [Options]
   
   * Input file's name should be first
-  
   * Option's ordering does not matter (All input can be entered.)
 -------------------
 (Must be added)
