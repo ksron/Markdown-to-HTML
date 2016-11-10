@@ -45,6 +45,12 @@ public class option_input {
 						else if(args[i].equalsIgnoreCase("-1")){
 							System.out.println("Option set selected");
 						}
+						else if(args[i].equalsIgnoreCase("-2")){
+							System.out.println("Option set selected");
+						}
+						else if(args[i].equalsIgnoreCase("-3")){
+							System.out.println("Option set selected");
+						}
 						{
 							// [-option] should be followed by details
 							if((i >= args.length - 1) || args[i+1].charAt(0) == '-')
