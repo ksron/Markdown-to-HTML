@@ -7,20 +7,19 @@ Software Engineering Group S project
 TERM Project
 ===============
 Mark Down Parser
-***********************************************************
+*************
 >*Markdown Parser* is translating md file to various file
->For example, it will convert Markdown to HTML, PDF, SLIDE etc.
->This *README.md* file is a manual for command.
-************************************************************
+>>For example, it will convert Markdown to HTML, PDF, SLIDE etc.
+>>This *README.md* file is a manual for command.
+--------
 Java Command Line:
    * -o: Output's name.
    * -H: Showing Help menu
    * -s: Output's style.
    * -f: Format
-   * -d: Directory
+   * -d: Director
 -------------
 mdconverter {Input files} [Options]
-  
   * Input file's name should be first
   * Option's ordering does not matter (All input can be entered.)
 -------------------
