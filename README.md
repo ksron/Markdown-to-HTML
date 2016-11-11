@@ -15,12 +15,12 @@ mdconverter (-h)
 ```
 examples)
 ```
-mdconverter Readme.md -o hello            (o)
-mdconverter Hongshin.md -o                (x - No argument)
-mdconverter Hongshin.md                   (o - Default)
-mdconverter -h                            (o - Call help)
-mdconverter Hongshin.md -h                (x - Wrong Option)
-mdconverter Readme.md -o hello -f html    (o)
+Readme.md -o hello            (o)
+Hongshin.md -o                (x - No argument)
+Hongshin.md                   (o - Default)
+-h                            (o - Call help)
+Hongshin.md -h                (x - Wrong Option)
+Readme.md -o hello -f html    (o)
 ```
    * (-h): Show help messages. mdconverter -h.
 ```
