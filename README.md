@@ -33,37 +33,32 @@ mdconverter (-h)
               If you put only {input_file}, "{input_file}.html" file will be made (same name, but '.html').
 
 [options]: 
-           -o  -filename : Make html file which name is decided by user.
-                           We do not allow file's name extension. You can decide file's type(format) using '-f'
-           -f  -format   : Decide output's format type. '.html' and '.pptx' are allowed in this version.
-           -s  -style    : Decide output's style type (plain, fancy, slide). Only 'lower case' is allowed in '-style'. 
-            ---------- Shortkut Key Usage -----------
-            This is for shortkut key. 
-           [-1] : Command 1 
-           [-2] : Command 2
-           [-3] : Command 3
+        -o  (filename) : Make html file which name is <filename>.
+                         We do not allow file's name extension. You can decide file's type(format) using '-f'
+        -f  (format)   : Decide output's format type. Only '.html' is allowed in this version.
+        -s  (style)    : Decide output's style type (plain, fancy, slide). Only 'lower case' is allowed in <style>. 
+        -d  (direction): Decide where will you put the file. You can decide directory address.
+       ---------- Shortkut Key Usage ----------           
+       This is for shortkut key.
+        -1 : Command 1 
+        -2 : Command 2
+        -3 : Command 3
 ```
-   * {input_file}: Input File's name. If file does not exist, it will send error message.
-```java
-private static boolean inputFileExistance(String inFile){
-   /*Checking existency of files in directory
-   If file does not exist, call error message*/
-  }
- ```
-   * [options]: Choose options for converting '.md' file. This options does not impact by ordering. For example, '[-o] [-s] [-f]' shows same result with '[-f] [-s] [-o]'. And options cannot be run if user put wrong command(including {input_file}) or computer cannot find '.md' file. User can use both 'Upper' and 'Lower' alphabet.
-       * -o: Output
-       * -f: Format
-       * -s: Style
-       * -1: Command 1
-       * -2: Command 2
-       * -3: Command 3
-   
+   * {input_file}: Input File's name. If file does not exist, it will send error message. If user put only {input_file}, '{input_file}.html' will be made in same directory.
+   * [options]: Choose options for converting '.md' file. This options does not impact by ordering. User can use both 'Upper' and 'Lower' alphabet in options. But do not allow no arguments.(ex, only '-o', '-f' with no arguments.)
+```
+      * -o   (filename) : Make html file which name is decided by user. Do not allow file's extension.
+      * -f   (format)   : Decide output's format type. Only '.html' is allowed in this version.
+      * -s   (style)    : Decide output's style type (plain, fancy, slide). Only 'lower case' is allowed in (style).
+      * -d   (direction): Decide where will you put the file. You can decide directory address.
+      * -1              : Command 1
+      * -2              : Command 2
+      * -3              : Command 3
+```
+
 ----------
- __Caution__: Basically tool searches file in 'Tool's directory'. And if there is a same output's name in same directory, this tool will ask you a question that overwrite or not. if you put 'y or Y' command, it will overwrite, if you put 'n' or 'N' command, it will not overwrite.
+ __Caution__: Basically tool searches file in 'Tool's directory'. And if there is a same output's name in same directory, this tool will ask you a question that overwrite or not. if you put 'y or Y' command, it will overwrite, if you put 'n' or 'N' command, it will not overwrite and terminate. 
  
-----------
-#Must be added:
- 1. Detail Option(No file, Type, etc)
- 2. Where to save, How can defie
- 3. Command example
- 4. Number(1,2,3)'s detail command
+_Handong Global University.
+Software Engineering Term project first assignment.
+Group S_
