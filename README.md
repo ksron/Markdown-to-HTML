@@ -39,7 +39,8 @@ mdconverter (-h)
         -o  (filename) : Make html file which name is <filename>.
                          We do not allow file's name extension. You can decide file's type(format) using '-f'
         -f  (format)   : Decide output's format type. Only '.html' is allowed in this version.
-        -s  (style)    : Decide output's style type (plain, fancy, slide). Only 'lower case' is allowed in <style>. 
+        -s  (style)    : Decide output's style type (plain, fancy, slide). Only 'lower case' is allowed in (style). 
+                         If style is plain, '(filename).html' will be made, any others, '(filename)_(style).html' will be made.
         -d  (direction): Decide where will you put the file. You can decide directory address.
        ---------- Shortkut Key Usage ----------           
        This is for shortkut key.
@@ -48,11 +49,12 @@ mdconverter (-h)
         -3 : Command 3
 ```
    * {input_file}: Input File's name. If file does not exist, it will send error message. If user put only {input_file}, '{input_file}.html' will be made in same directory.
-   * [options]: Choose options for converting '.md' file. This options does not impact by ordering. User can use both 'Upper' and 'Lower' alphabet in options. But do not allow no arguments.(ex, only '-o', '-f' with no arguments.)
+   * [options]: Choose options for converting '.md' file. This options does not impact by ordering. User can use both 'Upper' and 'Lower' case in options. But do not allow no arguments.(ex, only '-o', '-f' with no arguments.).
 ```
       * -o   (filename) : Make html file which name is decided by user. Do not allow file's extension.
       * -f   (format)   : Decide output's format type. Only '.html' is allowed in this version.
       * -s   (style)    : Decide output's style type (plain, fancy, slide). Only 'lower case' is allowed in (style).
+                          If style is plain, '(filename).html' will be made, any others, '(filename)_(style).html' will be made.
       * -d   (direction): Decide where will you put the file. You can decide directory address.
       * -1              : Command 1
       * -2              : Command 2
