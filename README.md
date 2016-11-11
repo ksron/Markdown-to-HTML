@@ -5,7 +5,7 @@ Mark Down Converter
 - - - -
 ###How To Use?
 __A Java file__(option_input.java) is a tool for Markdown Converter.
-In this program, basically we call '.md' file, and decide conversion type, Output's name, Output's style, and Where we saves. Now, our steps of developing is not enough for showing all options. Basically we design converter **'.md' -> 'html'**
+In this program, basically we call '.md' file, and decide conversion type, Output's name, Output's style, and Where we saves. Now, our steps of developing is not enough for showing all options. Basically we design converter **'.md' -> '.html'**
 - - - -
 ##Tool's Command:
 ```
@@ -16,9 +16,10 @@ mdconverter (-h)
 examples)
 ```
 mdconverter Readme.md -o hello            (o)
-mdconverter Hongshin.md -o                (x-no argument)
-mdconverter Hongshin.md                   (o)
-mdconverter -h                            (o-call help)
+mdconverter Hongshin.md -o                (x - No argument)
+mdconverter Hongshin.md                   (o - Default)
+mdconverter -h                            (o - Call help)
+mdconverter Hongshin.md -h                (x - Wrong Option)
 mdconverter Readme.md -o hello -f html    (o)
 ```
    * (-h): Show help messages. mdconverter -h.
