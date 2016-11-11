@@ -56,7 +56,8 @@ mdconverter (-h)
 -o   (filename) : Make html file which name is decided by user. Do not allow file's extension.
 -f   (format)   : Decide output's format type. Only '.html' is allowed in this version.
 -s   (style)    : Decide output's style type (plain, fancy, slide). Only 'lower case' is allowed in (style).
-                  If style is plain, '(filename).html' will be made, any others, '(filename)_(style).html' will be made.
+                  If style is plain, '(filename).html' will be made, any others, 
+                  '(filename)_(style).html' will be made.
 -d   (direction): Decide where will you put the file. You can decide directory address.
                   End of address, you can add '\' or not. Both are allowed.
 -1              : Command 1
