@@ -43,6 +43,7 @@ mdconverter (-h)
                          If style is plain, '(filename).html' will be made, any others,
                         '(filename)_(style).html' will be made.
         -d  (direction): Decide where will you put the file. You can decide directory address.
+                         End of address, you can add '\' or not. Both are allowed.
        ---------- Shortkut Key Usage ----------           
        This is for shortkut key.
         -1 : Command 1 
@@ -57,6 +58,7 @@ mdconverter (-h)
 -s   (style)    : Decide output's style type (plain, fancy, slide). Only 'lower case' is allowed in (style).
                   If style is plain, '(filename).html' will be made, any others, '(filename)_(style).html' will be made.
 -d   (direction): Decide where will you put the file. You can decide directory address.
+                  End of address, you can add '\' or not. Both are allowed.
 -1              : Command 1
 -2              : Command 2
 -3              : Command 3
