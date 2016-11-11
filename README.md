@@ -1,7 +1,7 @@
 ![logo](Logo.jpg)
 Mark Down Converter
 ===========
-**Markdown Converter** is for translating '.md' file to various types of file. It will convert Markdown to HTML, PDF, SLIDE HTML, etc.
+**Markdown Converter** is for translating '.md' file to various types of file. It will convert Markdown to HTML, SLIDE HTML, etc.
 - - - -
 ###How To Use?
 __A Java file__(option_input.java) is a tool for Markdown Converter.
@@ -15,9 +15,11 @@ mdconverter (-h)
 ```
 examples)
 ```
-mdconverter Readme.md -o hello
-mdconverter Hongshin.md -o 
-mdconverter -h
+mdconverter Readme.md -o hello            (o)
+mdconverter Hongshin.md -o                (x-no argument)
+mdconverter Hongshin.md                   (o)
+mdconverter -h                            (o-call help)
+mdconverter Readme.md -o hello -f html    (o)
 ```
    * (-h): Show help messages. mdconverter -h.
 ```
