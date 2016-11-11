@@ -8,6 +8,27 @@ In this program, basically we call '.md' file, and decide conversion type, Outpu
 - - - -
 ###Tool's Command:
 ####mdconverter  {input_file} [options]
+####mdconverter  (-h)
+   * (-h): Show help messages. mdconverter -h.
+```
+*****Markdown Converter*****
+
+mdconverter (-h)
+            {input_file} [options]
+
+(-h): Show help message.
+
+{input_file}: Input file's name. You have to put file name extension too.
+              If computer does not find input file, it will send error message.
+
+[options]: [-o], [-f], [-s], [-1], [-2], [-3].
+           [-o] : Option
+           [-f] : Format
+           [-s] : Style
+           [-1] : Command 1
+           [-2] : Command 2
+           [-3] : Command 3
+```
    * {input_file}: Input File's name. If file does not exist, it will send error message.
 ```java
 private static boolean inputFileExistance(String inFile){
@@ -16,16 +37,12 @@ private static boolean inputFileExistance(String inFile){
   }
  ```
    * [options]: Choose options for converting '.md' file. This options does not impact by ordering. For example, '[-o] [-s] [-f]' shows same result with '[-f] [-s] [-o]'. And options cannot be run if user put wrong command(including {input_file}) or computer cannot find '.md' file. User can use both 'Upper' and 'Lower' alphabet.
-       * -o
-       * -f
-       * -s
-       * -1
-       * -2
-       * -3
-   * [-h]: Show Help messages.
-```
-Help Message
-```
+       * -o: Output
+       * -f: Format
+       * -s: Style
+       * -1: Command 1
+       * -2: Command 2
+       * -3: Command 3
 
 #Must be added:
  1. Detail Option(No file, Type, etc)
