@@ -8,6 +8,6 @@ public class HTML_Block extends Block{
 	
 	public String generate()
 	{
-		return new String("");
+		return text;
 	}
 }
