@@ -6,4 +6,8 @@ public class Hr extends Node{
 		super(input_str);
 	}
 	
+	public String generate()
+	{
+		return new String("<hr>");
+	}
 }

@@ -1,8 +1,15 @@
 
 public class Block extends Node{
 
+	protected String text;
+	
 	public Block(String input_str)
 	{
 		super(input_str);
+	}
+	
+	public String generate()
+	{
+		return new String("");
 	}
 }

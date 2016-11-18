@@ -6,4 +6,8 @@ public class Ord_List extends Node{
 		super(input_str);
 	}
 
+	public String generate()
+	{
+		return new String("");
+	}
 }

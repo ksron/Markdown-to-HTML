@@ -6,4 +6,9 @@ public class Paragraph extends Block{
 		super(input_str);
 	}
 
+	public String generate()
+	{
+		return new String("");
+	}
+	
 }

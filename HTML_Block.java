@@ -6,4 +6,8 @@ public class HTML_Block extends Block{
 		super(input_str);
 	}	
 	
+	public String generate()
+	{
+		return new String("");
+	}
 }

@@ -5,5 +5,10 @@ public class Unord_List extends Item_List{
 	{
 		super(input_str);
 	}
+	
+	public String generate()
+	{
+		return new String("");
+	}
 
 }
