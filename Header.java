@@ -20,25 +20,25 @@ public class Header extends Node{
 			size=2;
 		}
 		
-		else if(input_str.contains("###") || input_str.contains("---"))
+		else if(input_str.contains("###"))
 		{
 			text=input_str.replaceAll("#", "");
 			size=3;
 		}
 		
-		else if(input_str.contains("####") || input_str.contains("---"))
+		else if(input_str.contains("####"))
 		{
 			text=input_str.replaceAll("#", "");
 			size=4;
 		}
 		
-		else if(input_str.contains("#####") || input_str.contains("---"))
+		else if(input_str.contains("#####"))
 		{
 			text=input_str.replaceAll("#", "");
 			size=5;
 		}
 		
-		else if(input_str.contains("######") || input_str.contains("---"))
+		else if(input_str.contains("######"))
 		{
 			text=input_str.replaceAll("#", "");
 			size=6;

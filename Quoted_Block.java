@@ -2,11 +2,14 @@
 public class Quoted_Block extends Node{
 
 	protected String text;
+	// ********* Tokens[] token_list; *********
 	
 	public Quoted_Block(String input_str)
 	{
 		super(input_str);
 		text=input_str;
+		
+		// ********* Tokenizing Process?? *********
 	}
 
 	public String generate()
