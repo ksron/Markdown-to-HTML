@@ -20,7 +20,14 @@ public class option_input {
 		//Help message or input file
 		//Help message should come solely
 		if(args[0].equalsIgnoreCase("-h")){
-			System.out.println("Help message");
+			System.out.println("Usage: mdconverter {input_file} [options]");
+			System.out.println("Options: ");
+			System.out.println("-h\tDisplay help information");
+			System.out.println("-o <file>\tSet output file name <file>");
+			System.out.println("-f <format>\tSet output file format into <format>");
+			System.out.println("-s <style>\tSet output file style into <style>");
+			System.out.println("-d <dir>\tPlace output file into <dir> directory");
+			System.out.println("-###\tCall option set ###" );
 			System.exit(1);
 		}
 		else{
