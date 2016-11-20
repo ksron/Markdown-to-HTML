@@ -18,14 +18,14 @@ class SpecialChar extends StyleText
 			spCh = text_token;
 		}
 
-		if(text_token.contains("&lt;"))
+		if(text_token.contains("<"))
 		{
-			spCh = text_token;
+			spCh = text_token.replace("<", "&lt");
 		}
 		
-		if(text_token.contains("&gt;"))
+		if(text_token.contains(">"))
 		{
-			spCh = text_token;
+			spCh = text_token.replace(">", "&gt");
 		}
 	}
 	
