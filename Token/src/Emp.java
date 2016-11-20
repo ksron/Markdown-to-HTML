@@ -9,22 +9,22 @@ class Emp extends StyleText
 		
 		if(text_token.contains("*")&&!text_token.contains("**"))
 		{
-			emp_text = "<em>"+text_token.replace("*", "")+"</em>";
+			emp_text = "<em>"+text_token.replaceAll("*", "")+"</em>";
 		}
 		
 		else if(text_token.contains("_")&&!text_token.contains("__"))
 		{
-			emp_text = "<em>"+text_token.replace("_", "")+"</em>";
+			emp_text = "<em>"+text_token.replaceAll("_", "")+"</em>";
 		}
 
 		else if(text_token.contains("**"))
 		{
-			emp_text = "<strong>"+text_token.replace("**", "")+"</strong>";
+			emp_text = "<strong>"+text_token.replaceAll("**", "")+"</strong>";
 		}
 		
-		if(text_token.contains("&gt;"))
+		if(text_token.contains("__"))
 		{
-			emp_text = "<strong>"+text_token.replace("__", "")+"</strong>";
+			emp_text = "<strong>"+text_token.replaceAll("__", "")+"</strong>";
 		}
 	}
 	
