@@ -1,3 +1,8 @@
+/*
+  얘는 MDConstruct.
+ Visit 담아 두는 Construct 입니다.
+ */
+
 public class MDConstruct implements MDElement{
 	int i=0;
 	MDElement[] parts;

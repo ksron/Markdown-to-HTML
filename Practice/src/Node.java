@@ -1,8 +1,8 @@
 public class Node implements MDElement{
 
-	public String getString(){
+	public String generate(){
 
-		return "Node Practice";
+		return "Node practice";
 
 		}
 

@@ -1,6 +1,6 @@
 public class Token implements MDElement{
 
-	public String getString(){
+	public String generate(){
 
 	String token1 = "Token Practice";
 	
