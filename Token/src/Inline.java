@@ -1,11 +1,6 @@
-import org.w3c.dom.Text;
-
-//developing
-
 class Inline extends Links
 {
 	private String link;
-	//done
 	public Inline(String text_token) {
 		super(text_token);
 		

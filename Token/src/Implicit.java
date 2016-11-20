@@ -12,7 +12,7 @@ class Implicit extends Links
 	//Todo
 	public String generate()
 	{
-		
+		//To Be Modified
 		return string_text;
 	}
 }
