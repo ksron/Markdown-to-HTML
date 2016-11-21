@@ -1,18 +1,18 @@
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 //developing
 
 class Ref extends Links
 {
-	ArrayList<String> link_text = new ArrayList<String>();
-	ArrayList<String> link_label = new ArrayList<String>();
-	ArrayList<Integer> refNum = new ArrayList<Integer>();
+	private String link_text;
+	private String link_label;
 	
-	ArrayList<String> link_title = new ArrayList<String>();
-	ArrayList<String> link_url = new ArrayList<String>();
-	ArrayList<Integer> labelNum = new ArrayList<Integer>();
+	protected LinkedList<String> link_title = new LinkedList<String>();
+	protected LinkedList<String> link_url = new LinkedList<String>();
+	protected LinkedList<String> key_label = new LinkedList<String>();
 	
-	String tempUrl;
+	private String tempUrl;
 	
 	public Ref(String text_token) {
 		super(text_token);
@@ -39,11 +39,11 @@ class Ref extends Links
 		int j1 = reference.lastIndexOf("[");
 		int j2 = reference.lastIndexOf("]");
 		
-		link_text.add(reference.substring(i1+1, i2));	
-		link_label.add(reference.substring(j1, j2+1)); //ex. link_label = [id]
+		link_text=reference.substring(i1+1, i2);	
+		link_label=reference.substring(j1, j2+1); //ex. link_label = [id]
 	}
 	
-	public String LinkLabel(String defLinkLabel)
+	public void LinkLabel(String defLinkLabel)
 	{
 		String[] spLinkLabel;
 
@@ -72,11 +72,11 @@ class Ref extends Links
 		else
 		{
 			tempUrl = defLinkLabel;
+			link_title.add("");
 		}
 		
 		
-		
-		//get Link_url
+		//make Link_url
 		if(tempUrl.contains("<"))
 		{
 			link_url.add(tempUrl.substring(tempUrl.indexOf("<")+1, tempUrl.indexOf(">")));
@@ -90,14 +90,35 @@ class Ref extends Links
 			//do nothing
 			//there doesn't exit other case. IF it does, it doesn't follow markdown syntax. 
 		}
+		
+		//make key_label
+		key_label.add(tempUrl.substring(tempUrl.indexOf("[")+1, tempUrl.indexOf("]")));
 
 	}
 	
 	//Todo
 	public String generate()
 	{
-		
-		//To Be Modified
-		return string_text;
+		if(string_text.contains(":"))
+			return null;
+		else
+		{
+			Iterator<String> iterator = key_label.iterator();
+			int i = 0;
+			
+			while (iterator.hasNext())
+			{
+				String id = iterator.next();
+				
+				if(link_label.equals(id))
+				{
+					return "<a href= \"" + link_url.get(i) + "\" title = \""+link_title.get(i)+"\">"+link_text+"</a>";
+				}
+				
+				i++;
+				
+				return link_label; //when there's no URL for the label.
+			}
+		}
 	}
 }
