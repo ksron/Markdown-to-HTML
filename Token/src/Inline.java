@@ -4,12 +4,6 @@ class Inline extends Links
 	public Inline(String text_token) {
 		super(text_token);
 		
-		int i1 = text_token.indexOf("[");
-		int i2 = text_token.indexOf("]");
-		
-		int j1 = text_token.indexOf("(");
-		int j2 = text_token.indexOf(")");
-		
 		String link_text = text_token.substring(i1+1, i2);
 		
 		//link_url is absolute pathname or relative pathname of an website or local resource

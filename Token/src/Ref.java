@@ -1,8 +1,6 @@
 import java.util.Iterator;
 import java.util.LinkedList;
 
-//developing
-
 class Ref extends Links
 {
 	private String link_text;
@@ -32,13 +30,7 @@ class Ref extends Links
 	}
 	
 	public void RefLink(String reference)
-	{
-		int i1 = reference.indexOf("[");
-		int i2 = reference.indexOf("]");
-		
-		int j1 = reference.lastIndexOf("[");
-		int j2 = reference.lastIndexOf("]");
-		
+	{	
 		link_text=reference.substring(i1+1, i2);	
 		link_label=reference.substring(j1, j2+1); //ex. link_label = [id]
 	}
@@ -55,9 +47,9 @@ class Ref extends Links
 			link_title.add(spLinkLabel[1]);
 		}
 		
-		else if(defLinkLabel.contains("`"))
+		else if(defLinkLabel.contains("'"))
 		{
-			spLinkLabel = defLinkLabel.split("`");
+			spLinkLabel = defLinkLabel.split("'");
 			tempUrl = spLinkLabel[0];
 			link_title.add(spLinkLabel[1]);
 		}
