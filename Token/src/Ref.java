@@ -96,7 +96,6 @@ class Ref extends Links
 
 	}
 	
-	//Todo
 	public String generate()
 	{
 		if(string_text.contains(":"))
@@ -116,9 +115,8 @@ class Ref extends Links
 				}
 				
 				i++;
-				
-				return link_label; //when there's no URL for the label.
 			}
+			return string_text; //when there's no URL for the label.
 		}
 	}
 }
