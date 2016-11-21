@@ -1,25 +1,24 @@
-class Emp extends StyleText
+class Emp_close extends StyleText
 {
-	private String emp;
+	private String emp_close;
 	
-	public Emp(String text_token) {
+	public Emp_close(String text_token) {
 		super(text_token);
 		
 		if((text_token.contains("*")&&!text_token.contains("**"))||text_token.contains("_")&&!text_token.contains("__"))
 		{
-			emp = "<em>";
+			emp_close = "</em>";
 		}
 		
 		else if(text_token.contains("**")||text_token.contains("__"))
 		{
-			emp = "<strong>";
+			emp_close = "</strong>";
 		}
-		
 	}
 	
 	public String generate()
 	{
-		return emp;
+		return emp_close;
 	}
 }
 
