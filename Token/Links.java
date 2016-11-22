@@ -1,4 +1,6 @@
-class Links extends Token
+package Token;
+
+public class Links extends Token
 {
 	protected int i1, i2, j1, j2;
 	public Links(String text_token) {

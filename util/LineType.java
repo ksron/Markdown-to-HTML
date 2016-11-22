@@ -1,4 +1,4 @@
-package mdconverter;
+package util;
 
 public enum LineType {
 	CODE("(\\s{4}|\\t)(.*)"),

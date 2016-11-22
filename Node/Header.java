@@ -1,5 +1,6 @@
+package Node;
 
-public class Header extends Node{
+class Header extends Node{
 	
 	protected String text;
 	protected int size;
@@ -53,10 +54,11 @@ public class Header extends Node{
 
 	public String generate()
 	{
-		String ret_str;
+		String ret_str = "";
+		
 		for(int i=0; i<token_array.size();i++)
 		{
-			ret_str+=token_array.get(i).generate();
+			ret_str += token_array.get(i).generate();
 		}
 		return "<h"+size+">"+ret_str+"<h"+size+">";
 	}

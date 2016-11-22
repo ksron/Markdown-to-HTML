@@ -1,6 +1,8 @@
+package Token;
+
 //&lt, &gt; &amp
 //developing -check Todo
-class SpecialChar extends StyleText
+public class SpecialChar extends StyleText
 {
 	protected String spCh;
 	public SpecialChar(String text_token) 

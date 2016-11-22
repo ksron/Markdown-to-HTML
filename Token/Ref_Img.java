@@ -1,3 +1,6 @@
+package Token;
+
+import Node.Link_Addr;
 
 public class Ref_Img extends Image{
 	
@@ -12,6 +15,7 @@ public class Ref_Img extends Image{
 	
 	public String generate()
 	{
+		/*
 		Link_Addr temp;
 		
 		for(int i=0; i<Node.link_array.size();i++)
@@ -31,6 +35,8 @@ public class Ref_Img extends Image{
 		{
 			return "<img src="+temp.path_text+" alt="+alt_text+"/>";	
 		}
+		*/
+		return "";
 	}
 
 }

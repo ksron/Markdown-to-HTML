@@ -1,6 +1,6 @@
-import java.util.*;
+package Node;
 
-public class Paragraph extends Block{
+class Paragraph extends Block{
 		
 	public Paragraph(String input_str)
 	{		

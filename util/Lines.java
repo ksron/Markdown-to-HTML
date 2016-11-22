@@ -1,4 +1,4 @@
-package mdconverter;
+package util;
 
 public class Lines {
 	private int lineNum;

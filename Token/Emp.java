@@ -1,4 +1,6 @@
-class Emp extends StyleText
+package Token;
+
+public class Emp extends StyleText
 {
 	private String emp;
 	

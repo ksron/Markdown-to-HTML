@@ -1,10 +1,15 @@
 package mdconverter;
 
 import java.io.*;
+/*
 import java.util.Iterator;
 import java.util.LinkedList;
+*/
 
 import Node.Node;
+import util.LineType;
+import util.Lines;
+import util.NodeType;
 
 public class MDParser {
 	
@@ -134,17 +139,20 @@ public class MDParser {
 				doc.updateNode(Node.create(lines));
 			}
 			
+			in.close();
 		} catch (IOException e) {
 			System.err.println(e);
 			System.exit(1);
 		}
 		
+		/***
 		LinkedList<Node> nodes = doc.getNodes();
 		Iterator<Node> it =  nodes.iterator();
 		while(it.hasNext()){
 			System.out.println(it.next().getNodeType());
 			System.out.println(it.next().toString());
 		}
+		***/
 		return doc;
 	}
 }

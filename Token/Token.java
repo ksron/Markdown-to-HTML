@@ -1,5 +1,7 @@
+package Token;
+
 //done
-class Token
+public class Token
 {
 	protected String string_text;
 	
@@ -7,61 +9,64 @@ class Token
 	{
 		string_text = text_token;
 	}
-	
-	
-	public static Token create(String text_token)
+
+	/*
+	public static Token create(String text)
 	{
-		if(MDParser.checkToken(text_token)=="PlainText")
+		if(MDParser.checkToken(text)=="PlainText")
 		{
-			return new PlainText(text_token);
+			return new PlainText(text);
 		}
 		
-		else if(MDParser.checkToken(text_token)=="Escape")
+		else if(MDParser.checkToken(text)=="Escape")
 		{
-			return new Escape(text_token);
+			return new Escape(text);
 		}
 		
-		else if(MDParser.checkToken(text_token)=="SpecialChar")
+		else if(MDParser.checkToken(text)=="SpecialChar")
 		{
-			return new SpecialChar(text_token);
+			return new SpecialChar(text);
 		}
 		
-		else if(MDParser.checkToken(text_token)=="Emp")
+		else if(MDParser.checkToken(text)=="Emp")
 		{
-			return new Emp(text_token);
+			return new Emp(text);
 		}
 		
-		else if(MDParser.checkToken(text_token)=="HtmlCode")
+		else if(MDParser.checkToken(text)=="HtmlCode")
 		{
-			return new HtmlCode(text_token);
+			return new HtmlCode(text);
 		}
-		else if(MDParser.checkToken(text_token)=="Code")
+		else if(MDParser.checkToken(text)=="Code")
 		{
-			return new Code(text_token);
+			return new Code(text);
 		}
-		else if(MDParser.checkToken(text_token)=="Auto")
+		else if(MDParser.checkToken(text)=="Auto")
 		{
-			return new Auto(text_token);
+			return new Auto(text);
 		}
-		else if(MDParser.checkToken(text_token)=="Inline")
+		else if(MDParser.checkToken(text)=="Inline")
 		{
-			return new Inline(text_token);
+			return new Inline(text);
 		}
-		else if(MDParser.checkToken(text_token)=="Ref")
+		else if(MDParser.checkToken(text)=="Ref")
 		{
-			return new Ref(text_token);
+			return new Ref(text);
 		}
-		else if(MDParser.checkToken(text_token)=="Implicit")
+		else if(MDParser.checkToken(text)=="Implicit")
 		{
-			return new Implicit(text_token);
+			return new Implicit(text);
 		}
 		else
-			return new Token(text_token);
+			return new Token(text);
 	}
+	*/
 	
 	public String generate()
 	{
 		return string_text;
 	}
+	
+
 }
 

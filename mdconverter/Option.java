@@ -1,7 +1,6 @@
 package mdconverter;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -94,11 +93,14 @@ public class Option {
 				Scanner reader = new Scanner(System.in);
 				System.err.println("The output file already exists. Press y to continue");
 				String s = reader.next();
+				
 				if(s.equalsIgnoreCase("y")){
 					outputFile.delete();
 					outputFile.createNewFile();
 				}
 				else System.exit(1);
+				
+				reader.close();
 			}
 		} catch(NullPointerException e){
 			System.err.println("No certain directory");

@@ -1,4 +1,4 @@
-package mdconverter;
+package util;
 
 public enum NodeType {
 	NONE,
