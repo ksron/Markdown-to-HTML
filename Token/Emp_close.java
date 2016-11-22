@@ -1,4 +1,6 @@
-class Emp_close extends StyleText
+package Token;
+
+public class Emp_close extends StyleText
 {
 	private String emp_close;
 	

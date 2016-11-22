@@ -1,4 +1,6 @@
-public class Quoted_Block extends Node{
+package Node;
+
+class Quoted_Block extends Node{
 
 	protected String text;
 

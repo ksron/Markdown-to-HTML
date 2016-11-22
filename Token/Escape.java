@@ -1,5 +1,6 @@
-//done
-class Escape extends StyleText
+package Token;
+
+public class Escape extends StyleText
 {
 	protected String esCh;
 	

@@ -1,7 +1,9 @@
+package Token;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 
-class Implicit extends Links
+public class Implicit extends Links
 {
 	private String link_text;
 	

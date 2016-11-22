@@ -1,5 +1,6 @@
+package Node;
 
-public class Hr extends Node{
+class Hr extends Node{
 	
 	public Hr(String input_str)
 	{

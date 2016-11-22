@@ -1,5 +1,6 @@
+package Node;
 
-public class Block extends Node{
+class Block extends Node{
 
 	protected String text;
 	

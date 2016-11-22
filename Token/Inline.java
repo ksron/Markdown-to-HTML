@@ -1,4 +1,6 @@
-class Inline extends Links
+package Token;
+
+public class Inline extends Links
 {
 	private String link;
 	public Inline(String text_token) {

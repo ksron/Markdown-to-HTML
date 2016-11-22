@@ -1,5 +1,6 @@
+package Node;
 
-public class Ord_List extends Item_List{
+class Ord_List extends Item_List{
 	
 	public Ord_List(String input_str)
 	{

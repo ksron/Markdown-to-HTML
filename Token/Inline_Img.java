@@ -1,3 +1,5 @@
+package Token;
+
 
 public class Inline_Img extends Image{
 

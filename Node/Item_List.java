@@ -1,9 +1,12 @@
-import java.util.*;
+package Node;
 
-public class Item_List extends Node{
+import java.util.*;
+import Token.Token;
+
+class Item_List extends Node{
 	
 	protected int num_elem=0;
-	protected ArrayList<ArrayList<Token> > item_array=null;
+	protected ArrayList<ArrayList<Token>> item_array=null;
 	
 	public Item_List(String input_str)
 	{

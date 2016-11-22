@@ -1,5 +1,6 @@
-//done
-class Auto extends Links
+package Token;
+
+public class Auto extends Links
 {
 	protected String address;
 	

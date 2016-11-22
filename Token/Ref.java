@@ -1,7 +1,9 @@
+package Token;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 
-class Ref extends Links
+public class Ref extends Links
 {
 	private String link_text;
 	private String link_label;

@@ -1,64 +1,80 @@
-import java.lang.*;
+package Node;
+
 import java.util.*;
+
+import util.Lines;
+import util.NodeType;
+import Token.*;
 
 public class Node {
 
 	protected String raw_data;
-	public static ArrayList<Link_Addr> link_array = new ArrayList<Link_Addr>();
+	public ArrayList<Link_Addr> link_array = new ArrayList<Link_Addr>();
 	public ArrayList<Token> token_array=new ArrayList<Token>();
 	
 	public Node(String input_str)
 	{
 		raw_data=input_str;
 	}
+
+	public String toString(){
+		return raw_data;
+	}
 	
-	public static Node create(String input_str)
+	public static Node create(Lines lines)
 	{
-		if(MDParser.checkNode(input_str)=="Link_Addr")
+		NodeType nodeType = lines.getLinesType();
+		String block = lines.toString();
+
+		/*
+		if(nodeType=="Inline_Image")
 		{
-			Link_Addr node=new Link_Addr(input_str);
-			Node.link_array.add(node);
-			return node;
+			return new Inline_Img(input_str);
 		}
-		if(MDParser.checkNode(input_str)=="Hr")
+		if(nodeType=="Ref_Image")
 		{
-			return new Hr(input_str);
+			return new Ref_Img(block);
 		}
-		if(MDParser.checkNode(input_str)=="Header")
+		*/
+		if(nodeType == NodeType.LINKADDR)
 		{
-			return new Header(input_str);
+			return new Link_Addr(block);
 		}
-		if(MDParser.checkNode(input_str)=="HTML_Block")
+		if(nodeType == NodeType.HR)
 		{
-			return new HTML_Block(input_str);
+			return new Hr(block);
 		}
-		
-		if(MDParser.checkNode(input_str)=="Paragraph")
+		if(nodeType == NodeType.HEADER)
 		{
-			return new Paragraph(input_str);
+			return new Header(block);
 		}
-		
-		if(MDParser.checkNode(input_str)=="Code_Block")
+		/*
+		if(nodeType=="HTML_Block")
 		{
-			return new Code_Block(input_str);
+			return new HTML_Block(block);
 		}
-		
-		if(MDParser.checkNode(input_str)=="Quoted_Block")
+		*/
+		if(nodeType == NodeType.BLOCK)
 		{
-			return new Quoted_Block(input_str);
-		}
-		
-		if(MDParser.checkNode(input_str)=="Unord_List")
-		{
-			return new Unord_List(input_str);
+			return new Paragraph(block);
 		}
 		
-		if(MDParser.checkNode(input_str)=="Ord_List")
+		if(nodeType == NodeType.QUOTED)
 		{
-			return new Ord_List(input_str);
+			return new Quoted_Block(block);
 		}
 		
-		return new Node(input_str);
+		if(nodeType == NodeType.UNORDERD_LIST)
+		{
+			return new Unord_List(block);
+		}
+		
+		if(nodeType == NodeType.ORDERED_LIST)
+		{
+			return new Ord_List(block);
+		}
+		
+		return new Node(block);
 	}
 	
 	public static ArrayList<Token> tokenize(String input_str)
@@ -77,7 +93,7 @@ public class Node {
 				int emp_count=0;
 				for(int j=0; j<token_list.size();j++)
 				{
-					if((token_list[j] instanceof Emp) || (token_list[j] instanceof Emp_Close))
+					if((token_list.get(j) instanceof Emp) || (token_list.get(j) instanceof Emp_close))
 						emp_count++;
 				}
 				if(input_str.charAt(i+1)=='*')
@@ -85,7 +101,7 @@ public class Node {
 					if(emp_count%2==0)
 						token_list.add(new Emp(input_str.substring(i,i+2)));
 					else
-						token_list.add(new Emp_Close(input_str.substring(i, i+2)));
+						token_list.add(new Emp_close(input_str.substring(i, i+2)));
 					i++;
 				}
 				else
@@ -93,7 +109,7 @@ public class Node {
 					if(emp_count%2==0)
 						token_list.add(new Emp(input_str.substring(i,i+1)));
 					else
-						token_list.add(new Emp_Close(input_str.substring(i, i+1)));
+						token_list.add(new Emp_close(input_str.substring(i, i+1)));
 				}
 			}	
 			else if(input_str.charAt(i)=='_')
@@ -104,7 +120,7 @@ public class Node {
 				int emp_count=0;
 				for(int j=0; j<token_list.size();j++)
 				{
-					if((token_list[j] instanceof Emp) || (token_list[j] instanceof Emp_Close))
+					if((token_list.get(j) instanceof Emp) || (token_list.get(j) instanceof Emp_close))
 						emp_count++;
 				}
 				if(input_str.charAt(i+1)=='_')
@@ -112,7 +128,7 @@ public class Node {
 					if(emp_count%2==0)
 						token_list.add(new Emp(input_str.substring(i,i+2)));
 					else
-						token_list.add(new Emp_Close(input_str.substring(i, i+2)));
+						token_list.add(new Emp_close(input_str.substring(i, i+2)));
 					i++;
 				}
 				else
@@ -120,7 +136,7 @@ public class Node {
 					if(emp_count%2==0)
 						token_list.add(new Emp(input_str.substring(i,i+1)));
 					else
-						token_list.add(new Emp_Close(input_str.substring(i, i+1)));
+						token_list.add(new Emp_close(input_str.substring(i, i+1)));
 				}
 			}	
 			else if(input_str.charAt(i)==92)
@@ -139,14 +155,14 @@ public class Node {
 				int code_count=0;
 				for(int j=0; j<token_list.size();j++)
 				{
-					if((token_list[j] instanceof Code) || (token_list[j] instanceof Code_Close))
+					if((token_list.get(j) instanceof Code) || (token_list.get(j) instanceof Code_close))
 						code_count++;
 				}
 
 				if(code_count%2==0)
 					token_list.add(new Code(input_str.substring(i,i+1)));
 				else
-					token_list.add(new Code_Close(input_str.substring(i, i+1)));
+					token_list.add(new Code_close(input_str.substring(i, i+1)));
 			}
 			else if((input_str.charAt(i)=='!') && (input_str.charAt(i+1)=='['))
 			{					
