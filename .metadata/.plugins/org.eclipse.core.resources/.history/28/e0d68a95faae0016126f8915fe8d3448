@@ -1,0 +1,205 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.util.Scanner;
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+
+public class generator implements MDElementVisitor{
+
+//String filename = new option_input.filename();
+	
+	public void visit(Node node){
+		
+		node.generate();
+		try{
+		FileWriter m_writer = new FileWriter("test.html",true);
+		m_writer.write("<h1>"+node.generate()+"</h1>"+"<hr/>"+"\n");
+		m_writer.close();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		
+		System.out.println(node.generate());
+		
+		}
+	public void visit(Token token){
+		token.generate();
+		try{
+			FileWriter m_writer = new FileWriter("test.html",true);
+			m_writer.write("<marquee>" + "<p>" + "<font color = 'cyun'>" 
+							+token.generate()+"</font></p>"+"</marquee>"+"\n");
+			m_writer.close();
+		}catch(IOException e){
+				e.printStackTrace();
+			}
+		System.out.println(token.generate());
+		}
+	
+	
+	-------------Node Case-------------
+	public void visit(Inline_Img image){
+		image.generate();
+
+		try{
+		FileWriter m_writer = new FileWriter("test.html",true);
+		m_writer.write(image.generate()+"<hr/>"+"\n");
+		m_writer.close();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		
+		System.out.println(image.generate());
+		
+	}
+	
+	public void visit(Ref_Img Ref){
+		Ref.generate();
+	
+		try{
+		FileWriter m_writer = new FileWriter("test.html",true);
+		m_writer.write(Ref.generate()+"<hr/>"+"\n");
+		m_writer.close();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		
+		System.out.println(Ref.generate());
+		
+	}
+	
+	public void visit(Link_Addr Link){
+		Link.generate();
+	
+		try{
+		FileWriter m_writer = new FileWriter("test.html",true);
+		m_writer.write(Link.generate()+"<hr/>"+"\n");
+		m_writer.close();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		
+		System.out.println(Link.generate());
+		
+	}
+	
+	public void visit(Hr hr){
+		hr.generate();
+	
+		try{
+		FileWriter m_writer = new FileWriter("test.html",true);
+		m_writer.write(hr.generate()+"<hr/>"+"\n");
+		m_writer.close();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		
+		System.out.println(hr.generate());
+		
+	}
+	
+	public void visit(Header header){
+		header.generate();
+		
+		try{
+		FileWriter m_writer = new FileWriter("test.html",true);
+		m_writer.write(header.generate()+"<hr/>"+"\n");
+		m_writer.close();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		
+		System.out.println(header.generate());
+	
+	}
+	
+	public void visit(HTML_Block block){
+		block.generate();
+		
+		try{
+		FileWriter m_writer = new FileWriter("test.html",true);
+		m_writer.write(block.generate()+"<hr/>"+"\n");
+		m_writer.close();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		
+		System.out.println(block.generate());
+	
+	}
+	
+	public void visit(Paragraph paragraph){
+		paragraph.generate();
+		
+		try{
+		FileWriter m_writer = new FileWriter("test.html",true);
+		m_writer.write(paragraph.generate()+"<hr/>"+"\n");
+		m_writer.close();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		
+		System.out.println(paragraph.generate());
+	
+	}
+	
+	public void visit(Quoted_Block qb){
+		qb.generate();
+		
+		try{
+		FileWriter m_writer = new FileWriter("test.html",true);
+		m_writer.write(qb.generate()+"<hr/>"+"\n");
+		m_writer.close();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		
+		System.out.println(qb.generate());
+	
+	}
+	
+	public void visit(Unord_List UL){
+		UL.generate();
+	}
+	public void visit(Ord_List OL){
+		OL.generate();
+	}
+	*/
+
+	/*
+	----------Token Case-------------
+	public void visit(PlainText PT){
+		PT.generate();
+	}
+	public void visit(Escape escape){
+		escape.generate();
+	}
+	public void visit(SpecialChar SC){
+		SC.generate();
+	}
+	public void visit(Emp emp){
+		emp.generate();
+	}
+	public void visit(HtmlCode HC){
+		HC.generate();
+	}
+	public void visit(Code cd){
+		cd.generate();
+	}
+	public void visit(Auto at){
+		at.generate();
+	}
+	public void visit(Inline il){
+		il.generate();
+	}
+	public void visit(Ref rf){
+		rf.generate();
+	}
+	public void visit(Implicit it){
+		it.generate();
+	}
+	*/
+
+	
+	public void visit(MDConstruct md){}
+}

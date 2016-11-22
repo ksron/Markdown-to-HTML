@@ -1,9 +1,13 @@
+package mdconverter;
+
 //Visitor for Node & Token
 public interface MDElementVisitor{
 
-	public void visit(Node node);
-	public void visit(Token token);
+	public void visit(Node_practice node);
+	public void visit(Token_practice token);
 	public void visit(MDConstruct mdConstruct);
+	public void visit(Document doc);
+	public void visit(Mconvert con);
 	
 	/*
 	-------------Node Case-------------

@@ -1,0 +1,23 @@
+package generate;
+
+public class Practice implements interpractice{
+
+	public Practice() {
+		// TODO Auto-generated constructor stub
+		int num=3;
+	}
+	public int number(){
+		
+		return 5;
+	}
+	
+	public void launch(){
+		System.out.println("Launch");
+		
+	}
+
+}
+
+public interface interpractice(){
+	public void launch();	
+}

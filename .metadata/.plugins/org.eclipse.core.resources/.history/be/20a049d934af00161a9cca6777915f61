@@ -1,0 +1,18 @@
+public class Node implements MDElement{
+
+	public String generate(Document dc){
+
+		dc.updateNode("Practice");
+		
+		return "Node practice";
+
+		}
+
+
+	public void accept(MDElementVisitor mdelementVisitor){
+		mdelementVisitor.visit(this);
+		}
+
+
+
+}

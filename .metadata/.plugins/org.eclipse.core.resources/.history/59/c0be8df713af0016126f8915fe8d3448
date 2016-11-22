@@ -1,0 +1,16 @@
+public class Node implements MDElement{
+
+	public String generate(){
+
+		return "Node Practice";
+
+		}
+
+
+	public void accept(MDElementVisitor mdelementVisitor){
+		mdelementVisitor.visit(this);
+		}
+
+
+
+}

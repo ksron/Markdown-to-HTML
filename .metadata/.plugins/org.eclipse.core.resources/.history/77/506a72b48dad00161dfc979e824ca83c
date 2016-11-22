@@ -1,0 +1,7 @@
+//Visitor for Node & Token
+public interface MDElementVisitor{
+
+	public void visitNode(Node node);
+	public void visitToken(Token token);
+
+}

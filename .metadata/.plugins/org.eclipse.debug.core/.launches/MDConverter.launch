@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/MDParser/새 폴더/Markdown-to-HTML-parser_v.0.1/Markdown-to-HTML-parser_v.0.1/src/mdconverter/MDConverter.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="MDConverter"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="MDParser"/>
+</launchConfiguration>

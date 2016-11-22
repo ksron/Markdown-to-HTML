@@ -1,0 +1,18 @@
+
+
+public class Node implements MDElement{
+
+	public void Node(){
+
+		String node1 = "Node Practice";
+
+		}
+
+
+	public void accept(MDElementVisitor mdelementVisitor){
+		mdelementVisitor.visitNode(this);
+		}
+
+
+
+}

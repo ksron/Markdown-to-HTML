@@ -1,0 +1,9 @@
+package generate;
+
+public class Printer {
+
+	public Printer() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

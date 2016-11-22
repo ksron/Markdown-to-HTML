@@ -1,0 +1,11 @@
+package generate;
+
+public class VIsitor {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Printer printer = new Printer();
+		printer.Printer();
+	}
+
+}

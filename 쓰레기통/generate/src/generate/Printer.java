@@ -1,0 +1,16 @@
+package generate;
+
+public class Printer extends Practice{
+
+	public void Printer() {
+		// TODO Auto-generated constructor stub
+	int z=10;
+	System.out.println(z+"\n");
+	z=super.number();
+	System.out.println(z+"\n");
+	super.launch();
+	
+	
+	}
+
+}

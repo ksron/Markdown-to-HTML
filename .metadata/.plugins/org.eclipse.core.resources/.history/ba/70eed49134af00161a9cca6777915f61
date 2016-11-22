@@ -1,0 +1,17 @@
+import java.util.LinkedList;
+
+
+public class Document {
+	
+	private LinkedList<Node> nodes;
+		
+	public void updateNode(Node node){
+		this.nodes.add(node);
+	}
+	
+	public LinkedList<Node> getNodes(){
+		return this.nodes;
+	}
+	
+
+}

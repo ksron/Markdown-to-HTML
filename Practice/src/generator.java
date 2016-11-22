@@ -1,9 +1,17 @@
+package mdconverter;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Scanner;
+
+import Node.Node;
+
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
+import java.util.Iterator;
+import java.util.Iterator;
 
 /*
  얘가 진짜 쓰는 generator 입니다.
@@ -14,7 +22,30 @@ public class generator implements MDElementVisitor{
 
 //String filename = new option_input.filename();
 	//얘는 나중에 CLI에서 input file 체크해서 method로 return 하는 거 받아서 받아 쓰려고 만들었습니다.
-	
+
+	public void visit(Document doc){
+		String a;
+		System.out.println("In VIsitor"+doc.generate());
+		a=doc.generate().substring(1,doc.generate().length()-1);
+		try{
+		FileWriter w_file = new FileWriter("Practice.html",true);
+		w_file.write(a);
+		w_file.close();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		
+//		System.out.println(doc.convert());
+	//	LinkedList<Node> test = new LinkedList<Node>();
+	//	test = doc.getNodes();
+	//	System.out.println(doc.generate());
+		//System.out.println(test.get(0));
+		}
+	public void visit(Mconvert con){
+//		System.out.println("In Mconvert: "+con.generate());
+	}
+
+	/*
 	public void visit(Node node){
 		
 		node.generate();
@@ -40,7 +71,7 @@ public class generator implements MDElementVisitor{
 				e.printStackTrace();
 			}
 		System.out.println(token.generate());
-		}
+		}*/
 	
 	/*
 	-------------Node Case-------------
@@ -349,5 +380,19 @@ public class generator implements MDElementVisitor{
 	*/
 
 	
-	public void visit(MDConstruct md){}
+	public void visit(MDConstruct md){
+		
+	}
+	@Override
+
+	public void visit(Node_practice node) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(Token_practice token) {
+		// TODO Auto-generated method stub
+		
+	}
 }

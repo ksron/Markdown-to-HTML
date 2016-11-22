@@ -1,0 +1,24 @@
+//Visitor for Node & Token
+public interface MDElementVisitor{
+
+	public void visit(Node node);
+	public void visit(Token token);
+	public void visit(MDConstruct mdConstruct);
+	
+	/*
+	-------------Node Case-------------
+	public void visit(Inline_Img image);
+	public void visit(Ref_Img Ref);
+	public void visit(Link_Addr Link);
+	public void visit(Hr hr);
+	public void visit(Header header);
+	public void visit(HTML_Block block);
+	public void visit(Paragraph paragraph);
+	public void visit(Quoted_Block qb);
+	public void visit(Unord_List UL);
+	public void visit(Ord_List OL);
+	*/
+	
+	
+	 
+}
