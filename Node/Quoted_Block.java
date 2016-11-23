@@ -10,10 +10,11 @@ class Quoted_Block extends Node{
 	{
 		super(lines, "<blockquote>", "</blockquote>");
 		
-		String str;
-		while((str = lines.next()) != null)
-			str = str.replaceFirst("[ ]{4}", "");
-		
+
+		for(int i = 0; i < lines.getLineNum(); i++){
+			lines.setLine(i, lines.next().replaceFirst("[ ]{0,3}> ", ""));
+		}
+
 		tokenize(lines);
 	}
 	

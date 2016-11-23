@@ -19,12 +19,17 @@ public class Link_Addr extends Node{
 		
 		path_text=img_info_list[1];
 		
-		if(img_info_list[2]!=null)
+		if(img_info_list.length == 3)
 			title=img_info_list[2].substring(1, img_info_list[2].length()-1);
 	}
 	
 	@Override
 	public void add(TokenComponent token){
 		throw new UnsupportedOperationException();
+	}
+	
+	@Override
+	public String generate(){
+		return "";
 	}
 }

@@ -28,7 +28,7 @@ public class Lines {
 	
 	public void append(String st){
 		this.lineNum++;
-		lines.add(st);
+		lines.add(st + "\n");
 	}
 	
 	public void removeLast(){
@@ -51,6 +51,14 @@ public class Lines {
 	
 	public void setLine(int index, String s){
 		this.lines.set(index, s);
+	}
+	
+	public boolean hasNext(){
+		if(this.index >= this.lineNum)
+			return false;
+		else{
+			return true;
+		}
 	}
 	
 	public String next(){
