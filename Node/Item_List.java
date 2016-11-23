@@ -1,18 +1,20 @@
 package Node;
 
 import java.util.*;
-import Token.Token;
 
-class Item_List extends Node{
+import Token.TokenComponent;
+import util.Lines;
+
+abstract class Item_List extends Node{
 	
 	protected int num_elem=0;
-	protected ArrayList<ArrayList<Token>> item_array=null;
+	protected ArrayList<ArrayList<TokenComponent>> item_array=null;
 	
-	public Item_List(String input_str)
+	public Item_List(Lines lines)
 	{
-		super(input_str);
+		super(lines);
 		String temp="";
-		String trim_input=input_str.trim();
+		String trim_input=lines.toString().trim();
 		
 		for(int i=0;i<trim_input.length();i++)
 		{
@@ -28,8 +30,8 @@ class Item_List extends Node{
 		{
 			if((trim_input.charAt(i)=='*')||(trim_input.charAt(i)=='+')||(trim_input.charAt(i)=='-'))
 			{
-				ArrayList<Token> temp_array=Node.tokenize(temp);
-				item_array.add(temp_array);
+				//tokenize(line);
+				item_array.add(tokens);
 				temp="";
 			}
 			else
@@ -37,5 +39,10 @@ class Item_List extends Node{
 				temp+=trim_input.charAt(i);
 			}
 		}
+	}
+
+	public Item_List(Lines lines, String start, String end) {
+		this(lines);
+		setTag(start, end);
 	}	
 }

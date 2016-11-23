@@ -1,28 +1,20 @@
 package Node;
 
+import util.Lines;
+
 class Quoted_Block extends Node{
 
 	protected String text;
 
-	public Quoted_Block(String input_str)
+	public Quoted_Block(Lines lines)
 	{
-		super(input_str);
-		text=input_str;
-
-		text.replaceAll(">", "");
-		token_array=Node.tokenize(text);
-	}
-
-	public String generate()
-	{
-		String ret_str="<blockquote>";
+		super(lines, "<blockquote>", "</blockquote>");
 		
-		for(int i=0; i<token_array.size();i++)
-		{
-			ret_str+=token_array.get(i).generate();
-		}
+		String str;
+		while((str = lines.next()) != null)
+			str = str.replaceFirst("[ ]{4}", "");
 		
-		return ret_str+"</blockquote>";
+		tokenize(lines);
 	}
 	
 }

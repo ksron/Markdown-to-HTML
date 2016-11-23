@@ -1,15 +1,17 @@
 package Node;
 
+import util.Lines;
+
 class Ord_List extends Item_List{
 	
-	public Ord_List(String input_str)
+	public Ord_List(Lines lines)
 	{
-		super(input_str);
+		super(lines, "<ol>", "</ol>");
 	}
 
 	public String generate()
 	{
-		String ret_str="<ol>";
+		String ret_str = "";
 		
 		for(int i=0; i<item_array.size();i++)
 		{
@@ -21,6 +23,6 @@ class Ord_List extends Item_List{
 			ret_str+="<li>"+temp+"<li>";
 		}
 		
-		return ret_str+"</ol>";
+		return startingTag + ret_str + endingTag;
 	}
 }

@@ -1,7 +1,5 @@
 package Token;
 
-import java.lang.*;
-
 public class Image extends Token{
 
 	protected String alt_text;

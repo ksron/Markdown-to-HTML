@@ -1,22 +1,18 @@
 package Node;
 
+import Token.TokenComponent;
+import util.Lines;
+
 class Paragraph extends Block{
 		
-	public Paragraph(String input_str)
+	public Paragraph(Lines lines)
 	{		
-		super(input_str);
-		token_array=Node.tokenize(input_str);
+		super(lines, "<p>", "</p>");
+		tokenize(lines);
 	}
-
-	public String generate()
-	{
-		String ret_str="<p>";
-		
-		for(int i=0; i<token_array.size();i++)
-		{
-			ret_str+=token_array.get(i).generate();
-		}
-		
-		return ret_str+"<p>";
+	
+	@Override
+	public void add(TokenComponent token){
+		throw new UnsupportedOperationException();
 	}
 }

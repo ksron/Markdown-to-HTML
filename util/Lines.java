@@ -1,14 +1,17 @@
 package util;
 
+import java.util.LinkedList;
+
 public class Lines {
 	private int lineNum;
+	private LinkedList<String> lines;
 	private NodeType lineType;
-	private StringBuilder s;
+	private int index = 0;
 	
 	public Lines(){
-		this.lineNum = 1;
+		this.lineNum = 0;
 		this.lineType = NodeType.NONE;
-		this.s = new StringBuilder();
+		lines = new LinkedList<>();
 	}
 	
 	public void setLinesType(NodeType code){
@@ -24,10 +27,47 @@ public class Lines {
 	}
 	
 	public void append(String st){
-		this.s.append(st + "\n");
+		this.lineNum++;
+		lines.add(st);
 	}
 	
+	public void removeLast(){
+		this.lineNum--;
+		this.lines.removeLast();
+	}
+	
+	public void remove(int i){
+		this.lineNum--;
+		this.lines.remove(i);
+	}
+	
+	public LinkedList<String> getLines(){
+		return this.lines;
+	}
+	
+	public String lineAt(int i){
+		return this.lines.get(i);
+	}
+	
+	public void setLine(int index, String s){
+		this.lines.set(index, s);
+	}
+	
+	public String next(){
+		try{
+			String output = this.lines.get(this.index++);
+			return output;
+		}catch(IndexOutOfBoundsException e){
+			return null;
+		}
+	}
+	
+	@Override
 	public String toString(){
-		return this.s.toString();	
+		String s = "";
+		for(String temp : lines)
+			s += temp;
+		
+		return s;
 	}
 }

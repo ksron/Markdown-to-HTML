@@ -1,66 +1,51 @@
 package Node;
 
+import Token.TokenComponent;
+import util.Lines;
+
 class Header extends Node{
 	
 	protected String text;
 	protected int size;
 
-	public Header(String input_str)
+	public Header(Lines lines)
 	{
-		super(input_str);
+		super(lines);
 		
-		if(input_str.contains("#") || input_str.contains("="))
-		{
-			text=input_str.replaceAll("#|=", "");
-			token_array=Node.tokenize(text);
-			size=1;
+		lines.setLine(0, lines.lineAt(0).replaceFirst("\\s{0,3}", ""));
+		if(lines.lineAt(0).charAt(0) == '#'){
+			size = 1;
+			
+			for(int i = 1; i < lines.lineAt(0).length(); i++){
+				if(lines.lineAt(0).charAt(i) != '#')
+					break;
+				size++;
+			}
+			
+			lines.setLine(0, lines.lineAt(0).substring(size));
+			
+			if(size > 6) 
+				size = 6;
 		}
-		
-		else if(input_str.contains("##") || input_str.contains("-"))
-		{
-			text=input_str.replaceAll("#|-", "");
-			token_array=Node.tokenize(text);
-			size=2;
+		else if(lines.getLineNum() > 1){
+			if(lines.lineAt(1).contains("="))
+				size = 1;
+			else if(lines.lineAt(1).contains("-"))
+				size = 2;
+			
+			lines.removeLast();	
 		}
-		
-		else if(input_str.contains("###"))
-		{
-			text=input_str.replaceAll("#", "");
-			token_array=Node.tokenize(text);
-			size=3;
+		else{
+			size = 6;
 		}
-		
-		else if(input_str.contains("####"))
-		{
-			text=input_str.replaceAll("#", "");
-			token_array=Node.tokenize(text);
-			size=4;
-		}
-		
-		else if(input_str.contains("#####"))
-		{
-			text=input_str.replaceAll("#", "");
-			token_array=Node.tokenize(text);
-			size=5;
-		}
-		
-		else if(input_str.contains("######"))
-		{
-			text=input_str.replaceAll("#", "");
-			token_array=Node.tokenize(text);
-			size=6;
-		}
-	}
 
-	public String generate()
-	{
-		String ret_str = "";
-		
-		for(int i=0; i<token_array.size();i++)
-		{
-			ret_str += token_array.get(i).generate();
-		}
-		return "<h"+size+">"+ret_str+"<h"+size+">";
+		setData(lines);
+		setTag("<h"+size+">", "</h"+size+">");
+		tokenize(lines);
 	}
 	
+	@Override
+	public void add(TokenComponent token){
+		throw new UnsupportedOperationException();
+	}
 }

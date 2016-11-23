@@ -1,14 +1,22 @@
 package Node;
 
+import Token.TokenComponent;
+import util.Lines;
+
 class Hr extends Node{
 	
-	public Hr(String input_str)
+	public Hr(Lines lines)
 	{
-		super(input_str);
+		super(lines);
 	}
 	
 	public String generate()
 	{
 		return new String("<hr>");
+	}
+	
+	@Override
+	public void add(TokenComponent token){
+		throw new UnsupportedOperationException();
 	}
 }

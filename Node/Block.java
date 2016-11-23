@@ -1,13 +1,21 @@
 package Node;
 
+import Token.TokenComponent;
+import util.Lines;
+
 class Block extends Node{
 
-	protected String text;
-	
-	public Block(String input_str)
+	public Block(Lines lines)
 	{
-		super(input_str);
-		text=input_str;
+		super(lines);
 	}
+
+	public Block(Lines lines, String start, String end) {
+		super(lines, start, end);
+	}	
 	
+	@Override
+	public void add(TokenComponent token){
+		throw new UnsupportedOperationException();
+	}
 }

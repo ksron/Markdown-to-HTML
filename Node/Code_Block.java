@@ -1,22 +1,17 @@
 package Node;
 
+import util.Lines;
+
 class Code_Block extends Block{
 	
-	public Code_Block(String input_str)
+	public Code_Block(Lines lines)
 	{
-		super(input_str);
-		token_array=Node.tokenize(input_str);
-	}
-	
-	public String generate()
-	{
-		String ret_str="<pre><code>";
+		super(lines, "<pre><code>", "</code></pre>");
 		
-		for(int i=0; i<token_array.size();i++)
-		{
-			ret_str+=token_array.get(i).generate();
-		}
+		String str;
+		while((str = lines.next()) != null)
+			str = str.replaceFirst("[ ]{4}", "");
 		
-		return ret_str+"</code></pre>";
+		tokenize(lines);
 	}
 }
