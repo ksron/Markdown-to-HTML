@@ -137,7 +137,7 @@ public class MDParser {
 			return LineType.SETEXT_HEADER;
 		}
 		else if(line.matches(LineType.BAR_LINE.pattern)){
-			return LineType.SETEXT_HEADER;
+			return LineType.BAR_LINE;
 		}
 		else if(line.matches(LineType.LINKADDR.pattern)){
 			return LineType.LINKADDR;
