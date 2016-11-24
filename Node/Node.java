@@ -59,8 +59,10 @@ public abstract class Node implements TokenComponent{
 		{
 			html+=tokens.get(i).generate();
 		}
-		return startingTag+html+endingTag;
 		
+		html = html.substring(0, html.length()-1);
+		
+		return startingTag+html+endingTag;
 	}
 	
 	//Creating using Factory Method pattern
@@ -69,6 +71,8 @@ public abstract class Node implements TokenComponent{
 		NodeType nodeType = lines.getLinesType();
 
 		switch(nodeType){
+			case CODE:
+				return new Code_Block(lines);
 			case LINKADDR:
 				return new Link_Addr(lines);
 			case HR:
