@@ -88,7 +88,7 @@ public class Tokenizer {
 				int code_count=0;
 				for(int j=0; j<tokens.size();j++)
 				{
-					if((tokens.get(j) instanceof Code) || (tokens.get(j) instanceof Code_Close))
+					if((tokens.get(j) instanceof Code) || (tokens.get(j) instanceof Code_close))
 						code_count++;
 				}
 
