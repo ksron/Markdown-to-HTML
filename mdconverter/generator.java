@@ -15,16 +15,28 @@ public class generator implements MDElementVisitor{
 
 	public void visit(Document doc){
 		String a;
-		
-		a=doc.generate();
-		
+		String b;
+		String c;
+		String d;
+		a=doc.generate();//Generator
+		b=doc.getOutput_file();//Output file's name
+		c=doc.getOutputDir();//Output File's direction
+		d=doc.getFormat();//Output File's Style
 		try{
-			FileWriter w_file = new FileWriter("Practice.html",true);
-			w_file.write(a);
+			FileWriter w_file = new FileWriter(c+ "\\" +b+ "." +d);
+			
+			w_file.write("<html>\n");
+			w_file.write("<body>\n");
+			
+			w_file.write(a);		
+			
+			w_file.write("</body>\n");
+			w_file.write("</html>\n");
 			w_file.close();
-		}catch(IOException e){
+	
+			}catch(IOException e){
 			e.printStackTrace();
-		}
+			}
 	}
 	
 	public void visit(MDConstruct md){

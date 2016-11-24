@@ -145,31 +145,38 @@ public class Tokenizer {
 					i+=(input_str.substring(i,index+1)).length()-1;
 				}
 			}
-		     else if((input_str.charAt(i)=='<') || (input_str.charAt(i)=='>'))
-	         {
-	            tokens.add(new PlainText(temp));
-	            temp="";
-	            
-	            if((!input_str.substring(i).contains(">"))||(input_str.charAt(i)=='>'))
-	            {
-	               tokens.add(new SpecialChar(input_str.substring(i,i+1)));
-	            }
-	            else
-	            {
-	               int index=input_str.indexOf(">",i);
-	               if((input_str.substring(i, index+1)).contains("."))
-	               {
-	                  tokens.add(new Auto(input_str.substring(i,index+1)));
-	                  i+=(input_str.substring(i,index+1)).length()-1;
-	               }
-	               else
-	               {
-	                  index=input_str.indexOf(">",index+1);
-	                  tokens.add(new HtmlCode(input_str.substring(i,index+1)));
-	                  i+=(input_str.substring(i,index+1)).length()-1;
-	               }
-	            }
-	         }
+			else if(input_str.charAt(i) == ('&'))
+			{
+				tokens.add(new PlainText(temp));
+				temp="";
+				
+				tokens.add(new SpecialChar(input_str.substring(i,i+1)));
+			}
+			else if(input_str.charAt(i) == ('<'))
+			{
+				tokens.add(new PlainText(temp));
+				temp="";
+				
+				if(!input_str.substring(i).contains(">"))
+				{
+					tokens.add(new SpecialChar(input_str.substring(i,i+1)));
+				}
+				else
+				{
+					int index=input_str.indexOf(">",i);
+					if((input_str.substring(i, index+1)).contains("."))
+					{
+						tokens.add(new Auto(input_str.substring(i,index+1)));
+						i+=(input_str.substring(i,index+1)).length()-1;
+					}
+					else
+					{
+						index=input_str.indexOf(">",index+1);
+						tokens.add(new HtmlCode(input_str.substring(i,index+1)));
+						i+=(input_str.substring(i,index+1)).length()-1;
+					}
+				}
+			}
 			else
 			{
 				temp=temp+input_str.charAt(i);
