@@ -18,14 +18,9 @@ public class MDConstruct implements MDElement, Cloneable{
 	}
 	public MDConstruct(Document document) {	
 		// TODO Auto-generated constructor stub/
-		parts = new MDElement[] {new Node_practice(), new Token_practice(), document, new Mconvert()};
+		parts = new MDElement[] {document};
 	}
-	
-	/*
-    public MDElement[] getElements() {
-        return parts.clone(); // Return a copy of the array of references.
-    }*/
-	
+		
 	public void accept(MDElementVisitor md){
 		for(i=0;i<parts.length;i++){
 			parts[i].accept(md);

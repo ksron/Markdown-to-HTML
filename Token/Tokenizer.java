@@ -2,8 +2,6 @@ package Token;
 
 import java.util.ArrayList;
 
-import util.Lines;
-
 public class Tokenizer {
 	private ArrayList<TokenComponent> tokens;
 	
@@ -18,7 +16,7 @@ public class Tokenizer {
 		
 		for(i=0; i<input_str.length();i++)
 		{
-			if(input_str.charAt(i).equals('*'))
+			if(input_str.charAt(i)=='*')
 			{
 				tokens.add(new PlainText(temp));
 				temp="";
@@ -29,7 +27,7 @@ public class Tokenizer {
 					if((tokens.get(j) instanceof Emp) || (tokens.get(j) instanceof Emp_close))
 						emp_count++;
 				}
-				if(input_str.charAt(i+1).equals('*'))
+				if(input_str.charAt(i+1)=='*')
 				{
 					if(emp_count%2==0)
 						tokens.add(new Emp(input_str.substring(i,i+2)));
@@ -45,7 +43,7 @@ public class Tokenizer {
 						tokens.add(new Emp_close(input_str.substring(i, i+1)));
 				}
 			}	
-			else if(input_str.charAt(i).equals('_'))
+			else if(input_str.charAt(i) == ('_'))
 			{
 				tokens.add(new PlainText(temp));
 				temp="";
@@ -56,7 +54,7 @@ public class Tokenizer {
 					if((tokens.get(j) instanceof Emp) || (tokens.get(j) instanceof Emp_close))
 						emp_count++;
 				}
-				if(input_str.charAt(i+1).equals('_'))
+				if(input_str.charAt(i+1) == ('_'))
 				{
 					if(emp_count%2==0)
 						tokens.add(new Emp(input_str.substring(i,i+2)));
@@ -97,11 +95,11 @@ public class Tokenizer {
 				else
 					tokens.add(new Code_close(input_str.substring(i, i+1)));
 			}
-			else if((input_str.charAt(i).equals('!')) && (input_str.charAt(i+1).equals('[')))
+			else if((input_str.charAt(i) == ('!')) && (input_str.charAt(i+1) == ('[')))
 			{					
 				int index=input_str.indexOf("]",i);
 				
-				if(input_str.charAt(index+1).equals('('))
+				if(input_str.charAt(index+1) == ('('))
 				{
 					tokens.add(new PlainText(temp));
 					temp="";
@@ -109,7 +107,7 @@ public class Tokenizer {
 					tokens.add(new Inline_Img(input_str.substring(i,input_str.indexOf(")",index)+1)));
 					i+=input_str.substring(i,input_str.indexOf(")",index)+1).length()-1;
 				}
-				else if(input_str.charAt(index+1).equals('['))
+				else if(input_str.charAt(index+1) == ('['))
 				{
 					tokens.add(new PlainText(temp));
 					temp="";
@@ -122,7 +120,7 @@ public class Tokenizer {
 					temp=temp+input_str.charAt(i);
 				}
 			}
-			else if(input_str.charAt(i).equals('['))
+			else if(input_str.charAt(i) == ('['))
 			{
 				tokens.add(new PlainText(temp));
 				temp="";
@@ -147,14 +145,14 @@ public class Tokenizer {
 					i+=(input_str.substring(i,index+1)).length()-1;
 				}
 			}
-			else if(input_str.charAt(i).equals('&'))
+			else if(input_str.charAt(i) == ('&'))
 			{
 				tokens.add(new PlainText(temp));
 				temp="";
 				
 				tokens.add(new SpecialChar(input_str.substring(i,i+1)));
 			}
-			else if(input_str.charAt(i).equals('<'))
+			else if(input_str.charAt(i) == ('<'))
 			{
 				tokens.add(new PlainText(temp));
 				temp="";

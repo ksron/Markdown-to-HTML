@@ -1,5 +1,6 @@
 package mdconverter;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 import Node.Node;
@@ -37,7 +38,14 @@ public class Document implements MDElement{
 	}
 
 	public String generate(){
-		return this.nodes.toString();
+		String s ="";
+		
+		Iterator<Node> it = nodes.iterator();
+		while(it.hasNext()){
+			s += it.next().generate() + "\n";	
+		}
+		
+		return s;
 	}
 	
 	//getter

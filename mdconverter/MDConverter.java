@@ -20,7 +20,7 @@ public class MDConverter {
 		
 	
 		try{
-			FileWriter w_file = new FileWriter("Practice.html",true);
+			FileWriter w_file = new FileWriter("Practice.html");
 			w_file.write("<html>\n");
 			w_file.write("<body>\n");
 			w_file.close();
