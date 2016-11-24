@@ -4,15 +4,21 @@ import java.util.LinkedList;
 
 import Node.Node;
 
-public class Document {
+public class Document implements MDElement{
 	private String input_file;
 	private String format;
 	private String output_file;
 	private String output_dir;
 	private String style;
+	public String converter;
 	
-	private LinkedList<Node> nodes;
+	protected LinkedList<Node> nodes;
+
 	
+	public Document(){
+	
+	}
+		
 	public Document(Option options){
 		this.setInputFile(options.get("i"));
 		this.setOutputFile(options.get("o"));
@@ -21,13 +27,17 @@ public class Document {
 		this.setOutputDir(options.get("d"));
 		nodes = new LinkedList<Node>();
 	}
-	
+
 	public void updateNode(Node node){
 		this.nodes.add(node);
 	}
-	
+
 	public LinkedList<Node> getNodes(){
 		return this.nodes;
+	}
+
+	public String generate(){
+		return this.nodes.toString();
 	}
 	
 	//getter
@@ -50,16 +60,16 @@ public class Document {
 	public String getStyle() {
 		return style;
 	}
-	
+
 	//setter
 	private void setFormat(String format) {
 		this.format = format;
 	}
-	
+
 	private void setOutputFile(String output_file) {
 		this.output_file = output_file;
 	}
-	
+
 	private void setOutputDir(String output_dir) {
 		this.output_dir = output_dir;
 	}
@@ -67,8 +77,13 @@ public class Document {
 	private void setStyle(String style) {
 		this.style = style;
 	}
-	
+
 	private void setInputFile(String input_file) {
 		this.input_file = input_file;
 	}
+
+	public void accept(MDElementVisitor md){
+		md.visit(this);	
+	}
+
 }
