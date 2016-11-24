@@ -1,7 +1,4 @@
 package Token;
-
-//&lt, &gt; &amp
-//developing -check Todo
 public class SpecialChar extends StyleText
 {
 	protected String spCh;
@@ -12,7 +9,7 @@ public class SpecialChar extends StyleText
 		//Todo: Is using '&' itself in MD allowed?
 		if(text_token.contains("&"))
 		{
-			spCh = text_token.replace("&", "&amp");
+			spCh = text_token.replace("&", "&amp;");
 		}
 		
 		if(text_token.contains("&amp;"))
@@ -22,12 +19,12 @@ public class SpecialChar extends StyleText
 
 		if(text_token.contains("<"))
 		{
-			spCh = text_token.replace("<", "&lt");
+			spCh = text_token.replace("<", "&lt;");
 		}
 		
 		if(text_token.contains(">"))
 		{
-			spCh = text_token.replace(">", "&gt");
+			spCh = text_token.replace(">", "&gt;");
 		}
 	}
 	
