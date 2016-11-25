@@ -11,32 +11,29 @@
    <property name="doc.dir" location="doc"/>
    <property name="javadoc.dir" location="doc\javadoc"/>
 
-   <target name="init" description="creating classes directory if deleted">
+   <target name="init" description="creating classes and javadoc directories if deleted">
       <mkdir dir="${build.dir}"/>
+      <mkdir dir="${javadoc.dir}"/>
    </target>
 
    <target name="build" depends="init" description="project build">
       <javac srcdir="${src.dir}" destdir="${build.dir}"/>
    </target>
 
-   <target name="make_jar" description="making a jar file">
-       <jar destfile="${lib.dir}\md_html.jar" basedir="${build.dir}"/>
+   <target name="make_jar" depends="build" description="making a jar file">
+      <jar destfile="${lib.dir}\md_html.jar" basedir="${build.dir}"/>
    </target>
 
-	<target name="init_doc" description="Make javadoc directory">
-		<mkdir dir="${doc.dir}\javadoc"/>
-	</target>
-
-	<target name="make_doc" depends="init_doc" description="making a javadoc">
-		<javadoc sourcepath="${src.dir}" destdir="${javadoc.dir}"/>
-	</target>
+   <target name="make_doc" depends="init" description="making javadocs">
+      <javadoc sourcepath="${src.dir}" destdir="${javadoc.dir}"/>
+   </target>
 
    <target name="clean" description="cleaning up classes">
       <delete dir="${build.dir}"/>
    </target>
 
-   <target name="clean_doc" description="Cleaning up .doc files">
-	  <delete dir="${javadoc.dir}"/>
+   <target name="clean_doc" description="cleaning up javadoc files">
+      <delete dir="${javadoc.dir}"/>
    </target>
 
 </project>
