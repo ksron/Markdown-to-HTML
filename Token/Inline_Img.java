@@ -19,7 +19,7 @@ public class Inline_Img extends Image{
 		
 		if(img_info_list.length==2)
 		{
-			title=img_info_list[1].substring(1, img_info_list[1].length()-2);
+			title=img_info_list[1].substring(0, img_info_list[1].length());
 		}
 	}	
 	
