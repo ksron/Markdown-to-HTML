@@ -9,15 +9,15 @@ public class Inline_Img extends Image{
 	public Inline_Img(String input_str)
 	{
 		super(input_str);
-		String img_info=input_str.substring(input_str.indexOf("(")+1);
-		String img_info_list[]=img_info.split(" ");
+		String img_info=input_str.substring(input_str.indexOf("(")+1,input_str.indexOf(")"));
+		String img_info_list[]=img_info.split("\"");
 		
 		if(img_info_list[0]!=null)
 		{
 			path_text=img_info_list[0];
 		}
 		
-		if(img_info_list[1]!=null)
+		if(img_info_list.length==2)
 		{
 			title=img_info_list[1].substring(1, img_info_list[1].length()-2);
 		}
