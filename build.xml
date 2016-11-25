@@ -25,7 +25,15 @@
    </target>
 
    <target name="make_doc" depends="init" description="making javadocs">
-      <javadoc sourcepath="${src.dir}" destdir="${javadoc.dir}"/>
+      <javadoc destdir="${javadoc.dir}">
+		 <fileset dir="${src.dir}\" defaultexcludes="yes">
+		     <include name="Node/"/>
+			 <include name="Token/"/>
+			 <include name="util/"/>
+			 <include name="mdconverter/"/>
+			 <exclude name="org/"/>
+		 </fileset>
+	  </javadoc>
    </target>
 
    <target name="clean" description="cleaning up classes">
