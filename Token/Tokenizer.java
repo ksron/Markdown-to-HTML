@@ -72,6 +72,9 @@ public class Tokenizer {
 			}	
 			else if(input_str.charAt(i)==92)
 			{
+				tokens.add(new PlainText(temp));
+				temp="";
+
 				tokens.add(new Escape(input_str.substring(i,i+2)));
 				i++;
 			}
