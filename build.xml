@@ -9,7 +9,7 @@
    <property name="build.dir" location="classes"/>
    <property name="lib.dir" location="lib"/>
    <property name="doc.dir" location="doc"/>
-   <property name="javadoc.dir" location="javadoc"/>
+   <property name="javadoc.dir" location="doc\javadoc"/>
 
    <target name="init" description="creating classes directory if deleted">
       <mkdir dir="${build.dir}"/>
@@ -24,7 +24,7 @@
    </target>
 
 	<target name="init_doc" description="Make javadoc directory">
-		<mkdir dir="${javadoc.dir}"/>
+		<mkdir dir="${doc.dir}\javadoc"/>
 	</target>
 
 	<target name="make_doc" depends="init_doc" description="making a javadoc">
