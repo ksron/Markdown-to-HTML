@@ -27,11 +27,12 @@ public class Inline_Img extends Image{
 	{
 		if(title!=null)
 		{
-			return "<a href="+"><img src="+path_text+" alt="+alt_text+"/>" + title + "</a>";
+			return "<img src=\""+path_text+"\" alt=\""+alt_text+ "\" title=\""+title+ "\" />";
 		}
+
 		else
 		{
-			return "<img src="+path_text+" alt="+alt_text+"/>";	
+			return "<img src=\""+path_text+"\" alt=\""+alt_text+"\"/>";
 		}
 	}
 	
