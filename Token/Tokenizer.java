@@ -145,7 +145,18 @@ public class Tokenizer {
 					i+=(input_str.substring(i,index+1)).length()-1;
 				}
 			}
-		     else if((input_str.charAt(i)=='<') || (input_str.charAt(i)=='>'))
+			else if(input_str.charAt(i)=='&')
+	         {
+	            tokens.add(new PlainText(temp));
+	            temp="";
+	            if(input_str.substring(i,i+6).equals("&copy;"))
+	            	tokens.add(new PlainText(input_str.substring(i,i+1)));
+	            else
+	            {
+	            	tokens.add(new SpecialChar(input_str.substring(i,i+1)));
+	            }
+	         }
+			else if((input_str.charAt(i)=='<') || (input_str.charAt(i)=='>'))
 	         {
 	            tokens.add(new PlainText(temp));
 	            temp="";
