@@ -1,9 +1,0 @@
-package generate;
-
-public class Practice {
-
-	public Practice() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

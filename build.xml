@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<project name="Markdown_HTML" basedir="." default="build">
+
+   <description>
+      A build script along with creating a jar file
+   </description>
+
+   <property name="src.dir" location="src"/>
+   <property name="build.dir" location="classes"/>
+   <property name="lib.dir" location="lib"/>
+
+   <target name="init" description="creating classes directory if deleted">
+      <mkdir dir="${build.dir}"/>
+   </target>
+
+   <target name="build" depends="init" description="project build">
+      <javac srcdir="${src.dir}" destdir="${build.dir}"/>
+   </target>
+
+   <target name="make_jar" description="making a jar file">
+       <jar destfile="${lib.dir}\md_html.jar" basedir="${build.dir}"/>
+   </target>
+
+   <target name="clean" description="cleaning up classes">
+      <delete dir="${build.dir}"/>
+   </target>
+
+</project>
