@@ -74,7 +74,6 @@ public class Tokenizer {
 			{
 				tokens.add(new PlainText(temp));
 				temp="";
-				
 				tokens.add(new Escape(input_str.substring(i,i+2)));
 				i++;
 			}
