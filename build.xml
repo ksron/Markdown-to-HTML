@@ -26,12 +26,12 @@
 
    <target name="make_doc" depends="init" description="making javadocs">
       <javadoc destdir="${javadoc.dir}">
-		   <fileset dir="${src.dir}" defaultexcludes="yes">
-		      <include name="Node"/>
-			   <include name="Token"/>
-			   <include name="util"/>
-			   <include name="mdconverter"/>
-			   <exclude name="org"/>
+		   <fileset dir="${src.dir}/" defaultexcludes="yes">
+		      <include name="Node/"/>
+			   <include name="Token/"/>
+			   <include name="util/"/>
+			   <include name="mdconverter/"/>
+			   <exclude name="org/"/>
 		   </fileset>
 	   </javadoc>
    </target>
