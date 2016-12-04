@@ -8,7 +8,7 @@ public class Escape extends StyleText
 	public Escape(String text_token) 
 	{
 		super(text_token);
-		String[] chList= {"", "`", "*", "_", "{", "}", "[", "]", "(", ")", "#", ".", "!"};
+		String[] chList= {"`", "*", "_", "{", "}", "[", "]", "(", ")", "#", ".", "!"};
 		
 		for(int i=0; i<chList.length;i++)
 		{

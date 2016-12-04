@@ -1,7 +1,5 @@
 package Token;
 
-import Node.Link_Addr;
-
 public class Ref_Img extends Image{
 	
 	protected String id;

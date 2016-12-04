@@ -36,7 +36,7 @@ public class generator implements MDElementVisitor{
 			try{
 				FileWriter w_file = new FileWriter(c+ "\\" +b+ "." +d);
 				
-				
+				System.out.println("\n" + a);
 				w_file.write(a);		
 				w_file.close();
 		
@@ -45,7 +45,7 @@ public class generator implements MDElementVisitor{
 			}
 		else 
 			System.err.println("Not a valid HTML");
-	}
+	}	
 	
 	public void visit(MDConstruct md){
 		

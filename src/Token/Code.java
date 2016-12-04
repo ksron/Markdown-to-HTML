@@ -6,6 +6,10 @@ public class Code extends Token
 		super(text_token);
 	}
 	
+	public Code() {
+		this("");
+	}
+
 	public String generate()
 	{	
 		return "<code>";

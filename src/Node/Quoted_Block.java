@@ -12,7 +12,7 @@ class Quoted_Block extends Node{
 		
 
 		for(int i = 0; i < lines.getLineNum(); i++){
-			lines.setLine(i, lines.next().replaceFirst("[ ]{0,3}> ", ""));
+			lines.setLine(i, lines.lineAt(i).replaceFirst("^[ ]{0,3}>[ ]", ""));
 		}
 
 		tokenize(lines);
