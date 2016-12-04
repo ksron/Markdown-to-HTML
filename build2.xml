@@ -26,6 +26,7 @@
       <javac srcdir="${src.dir}" destdir="${build.dir}" debug="true" includeantruntime="false">
 			<classpath path="lib/junit.jar" />
 			<classpath path="lib/hamcrest-core.jar" />
+			<classpath path="lib/jtidy.jar" />
 	  </javac>
    </target>
 
@@ -53,14 +54,18 @@
       <delete dir="${javadoc.dir}"/>
    </target>
 
+   <target name="clean_report" description="cleaning up javadoc files">
+      <delete dir="report"/>
+   </target>
+
    	<target name="test" depends ="build">
 		<junit showoutput="true" printsummary="on" enabletestlistenerevents="true" fork="true">
 			<classpath path="classes" />
 			<classpath path="lib/junit.jar" />
 			<classpath path="lib/hamcrest-core.jar" />
+			<classpath path="lib/jtidy.jar" />
 			<formatter type="plain" usefile="false" />
-			<test name="SimpleTest">
-			</test>
+			<batchtest><fileset dir="classes/Test"/></batchtest>
 		</junit>
 	</target>
 
@@ -70,11 +75,8 @@
 				<classpath path="classes" />
 				<classpath path="lib/junit.jar" />
 				<classpath path="lib/hamcrest-core.jar" />
-
 				<formatter type="plain" usefile="false" />
-
-				<test name="Coverage Test">
-				</test>
+				<batchtest><fileset dir="classes/Test"/></batchtest>
 			</junit>
 		</jacoco:coverage>
 
