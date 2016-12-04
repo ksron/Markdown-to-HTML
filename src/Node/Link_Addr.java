@@ -1,32 +1,111 @@
 package Node;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+
 import Token.TokenComponent;
 import util.Lines;
 
 public class Link_Addr extends Node{
 
-	public String id;
-	public String path_text;
-	public String title;
+	private String id;
+	private String path_text;
+	private String title="";
+	private static LinkedList<String> refList = new LinkedList<String>();
+	
+	private String reference = "none";
 	
 	public Link_Addr(Lines lines)
 	{
 		super(lines);
 		
-		id=lines.toString().substring(lines.toString().indexOf("[")+1,lines.toString().indexOf("]"));
-		
-		String[] img_info_list=lines.toString().split(" ");
-		
-		path_text=img_info_list[1];
-		
-		if(img_info_list.length == 3)
-			title=img_info_list[2].substring(1, img_info_list[2].length()-1);
+		if(lines!=null)
+		{
+			refList.add(lines.toString());
+		}		
 	}
+	
+
+	public void setProperties(String id)
+	{
+		Iterator<String> iterator = refList.iterator();
+		String ref = null;
+		
+		//select ref which has same id
+		while (iterator.hasNext())
+		{
+			ref = iterator.next();
+			this.id = ref.substring(0,ref.indexOf(":")).substring(ref.indexOf("[")+1,ref.lastIndexOf("]"));//[id] => ref = id
+			if(this.id.equalsIgnoreCase(id)){
+				reference = "yes";
+				break;
+			}
+		}
+		
+		//No reference : cannot link to url
+		if(reference.equals("none"))
+			return;
+		
+		//set title
+		String[] info_list=null;
+		String temp;
+		temp = ref.substring(ref.indexOf(":"));
+
+		if((temp.lastIndexOf("\"")==temp.substring(0,temp.lastIndexOf("\"")+1).length()-1)&&temp.lastIndexOf("\"")!=-1)
+		{	
+			info_list= temp.split("\"");
+			title=(info_list[1]);
+		}
+		
+		else if((temp.lastIndexOf("'")==temp.substring(0,temp.lastIndexOf("'")+1).length()-1)&&temp.lastIndexOf("'")!=-1)
+		{
+			info_list= temp.split("'");
+			title=(info_list[1]);
+		}
+		
+		else if((temp.lastIndexOf(")")==temp.substring(0,temp.lastIndexOf(")")+1).length()-1)&&temp.lastIndexOf(")")!=-1)
+		{
+			info_list= temp.split("\\(");
+			info_list[1]=info_list[1].substring(0, info_list[1].lastIndexOf(")"));
+			title=(info_list[1]);
+		} 
+		else
+			info_list = temp.split(":::");//don't split
+		
+		//set path_text
+		if(info_list[0].contains("<"))
+		{
+			path_text = info_list[0].substring(info_list[0].indexOf("<")+1, info_list[0].indexOf(">"));
+		}
+		
+		else if(info_list[0].contains("http"))
+		{
+			path_text = info_list[0].substring(info_list[0].indexOf("http"), info_list[0].length());
+		}
+		else
+		{
+			path_text = info_list[0].substring(info_list[0].indexOf(":")+1);
+		}
+
+	}
+	
+	
+	public String getTitle()
+	{
+		return title;
+	}
+		
+	public String getPath_text()
+	{
+		return path_text;
+	}	
+
 	
 	@Override
 	public void add(TokenComponent token){
 		throw new UnsupportedOperationException();
 	}
+	
 	
 	@Override
 	public String generate(){
