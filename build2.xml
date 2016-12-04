@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<project name="Markdown_HTML" basedir="." default="build" xmlns:jacoco="antlib:org.jacoco.ant">
+
+   <description>
+      A build script along with creating a jar file
+   </description>
+
+	<taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+		<classpath path="lib/jacocoant.jar"/>
+	</taskdef>
+
+   <property name="src.dir" location="src"/>
+   <property name="build.dir" location="classes"/>
+   <property name="lib.dir" location="lib"/>
+   <property name="doc.dir" location="doc"/>
+   <property name="javadoc.dir" location="doc\javadoc"/>
+   <property name="report.dir" location="report"/>
+
+   <target name="init" description="creating classes and javadoc directories if deleted">
+      <mkdir dir="${build.dir}"/>
+      <mkdir dir="${javadoc.dir}"/>
+	  <mkdir dir="${report.dir}"/>
+   </target>
+
+   <target name="build" depends="init" description="project build">
+      <javac srcdir="${src.dir}" destdir="${build.dir}" debug="true" includeantruntime="false">
+			<classpath path="lib/junit.jar" />
+			<classpath path="lib/hamcrest-core.jar" />
+	  </javac>
+   </target>
+
+   <target name="make_jar" depends="build" description="making a jar file">
+      <jar destfile="${lib.dir}\md_html.jar" basedir="${build.dir}"/>
+   </target>
+
+   <target name="make_doc" depends="init" description="making javadocs">
+      <javadoc destdir="${javadoc.dir}">
+		 <fileset dir="${src.dir}\" defaultexcludes="yes">
+		     <include name="Node/"/>
+			 <include name="Token/"/>
+			 <include name="util/"/>
+			 <include name="mdconverter/"/>
+			 <exclude name="org/"/>
+		 </fileset>
+	  </javadoc>
+   </target>
+
+   <target name="clean" description="cleaning up classes">
+      <delete dir="${build.dir}"/>
+   </target>
+
+   <target name="clean_doc" description="cleaning up javadoc files">
+      <delete dir="${javadoc.dir}"/>
+   </target>
+
+   	<target name="test" depends ="build">
+		<junit showoutput="true" printsummary="on" enabletestlistenerevents="true" fork="true">
+			<classpath path="classes" />
+			<classpath path="lib/junit.jar" />
+			<classpath path="lib/hamcrest-core.jar" />
+			<formatter type="plain" usefile="false" />
+			<test name="SimpleTest">
+			</test>
+		</junit>
+	</target>
+
+	<target name="cov-test" depends ="build">
+		<jacoco:coverage>
+			<junit showoutput="true" printsummary="on" enabletestlistenerevents="true" fork="true">
+				<classpath path="classes" />
+				<classpath path="lib/junit.jar" />
+				<classpath path="lib/hamcrest-core.jar" />
+
+				<formatter type="plain" usefile="false" />
+
+				<test name="Coverage Test">
+				</test>
+			</junit>
+		</jacoco:coverage>
+
+		<jacoco:coverage>
+			<java classname="Coverage Test" fork="true">
+				<classpath path="classes" />
+				<classpath path="lib/junit.jar" />
+				<classpath path="lib/hamcrest-core.jar" />
+			</java>
+		</jacoco:coverage>
+	</target>
+
+	<target name="cov-report" depends="cov-test">
+		<jacoco:report>
+
+			<executiondata>
+
+			</executiondata>
+
+			<structure name="Simple">
+				<classfiles>
+					<fileset dir="classes" />
+				</classfiles>
+				<sourcefiles>
+					<fileset dir="src" />
+				</sourcefiles>	
+			</structure>
+
+			<html destdir="report" />
+		</jacoco:report>
+	</target>
+
+
+</project>
