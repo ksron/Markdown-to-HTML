@@ -9,8 +9,8 @@ public class Links extends Token
 		i1 = text_token.indexOf("[");
 		i2 = text_token.indexOf("]");
 		
-		j1 = text_token.indexOf("(");
-		j2 = text_token.indexOf(")");
+		j1 = text_token.lastIndexOf("[");//lastIndexOf("[");
+		j2 = text_token.lastIndexOf("]");
 	}
 	
 }

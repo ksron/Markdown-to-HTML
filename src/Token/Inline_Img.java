@@ -3,33 +3,36 @@ package Token;
 
 public class Inline_Img extends Image{
 
-	protected String path_text;
-	protected String title;
+	private String path_text;
+	private String title;
 	
-	public Inline_Img(String input_str)
+	public Inline_Img(String text_token)
 	{
-		super(input_str);
-		String img_info=input_str.substring(input_str.indexOf("(")+1);
+		super(text_token);
+		String img_info=text_token.substring(text_token.indexOf("(")+1,text_token.indexOf(")"));
+		String img_info_list[]=img_info.split("\"");
 		
-		path_text = img_info.substring(0, img_info.indexOf(" "));
-		
-		int title_start = img_info.indexOf("\"")+1;
-		if(title_start > 0){
-			int title_end = title_start + img_info.substring(title_start).indexOf("\"");
-			title = img_info.substring(title_start, title_end);
+		if(img_info_list[0]!=null)
+		{
+			path_text=img_info_list[0];
 		}
-
+		
+		if(img_info_list.length==2)
+		{
+			title=img_info_list[1].substring(0, img_info_list[1].length());
+		}
 	}	
 	
 	public String generate()
 	{
 		if(title!=null)
 		{
-			return "<img src="+path_text+" alt="+alt_text+" title=\"" + title + "\"/>";
+			return "<img src=\""+path_text+"\" alt=\""+alt_text+ "\" title=\""+title+ "\" />";
 		}
+
 		else
 		{
-			return "<img src="+path_text+" alt="+alt_text+"/>";	
+			return "<img src=\""+path_text+"\" alt=\""+alt_text+"\"/>";
 		}
 	}
 	

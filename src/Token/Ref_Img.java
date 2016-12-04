@@ -1,40 +1,34 @@
 package Token;
 
+import Node.Link_Addr;
+
 public class Ref_Img extends Image{
 	
-	protected String id;
+	private String id;
 	
-	public Ref_Img(String input_str)
+	public Ref_Img(String text_token)
 	{
-		super(input_str);
-		
-		id=input_str.substring(input_str.lastIndexOf("[")+1, input_str.lastIndexOf("]"));
+		super(text_token);
+		id=text_token.substring(text_token.lastIndexOf("[")+1, text_token.lastIndexOf("]"));
 	}
 	
 	public String generate()
 	{
-		/*
-		Link_Addr temp;
+		Link_Addr link_addr = new Link_Addr(null);
 		
-		for(int i=0; i<Node.link_array.size();i++)
-		{
-			if(id==Node.link_array.get(i).id)
-			{
-				temp=Node.link_array.get(i);
-				break;
-			}
-		}
+		link_addr.setProperties(id);
 		
-		if(temp.title!=null)
+		if(link_addr.getPath_text()==null)//no reference for the ID
 		{
-			return "<a href="+"><img src="+temp.path_text+" alt="+alt_text+"/>" + temp.title + "</a>";
+			return string_text;
 		}
 		else
 		{
-			return "<img src="+temp.path_text+" alt="+alt_text+"/>";	
+			if(link_addr.getTitle()!="")
+				return "<img src=\""+link_addr.getPath_text()+"\" alt=\""+alt_text+ "\" title=\""+link_addr.getTitle()+ "\" />";
+			else
+				return "<img src=\""+link_addr.getPath_text()+"\" alt=\""+alt_text+"\"/>";
 		}
-		*/
-		return "";
 	}
 
 }
