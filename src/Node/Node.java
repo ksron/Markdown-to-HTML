@@ -8,7 +8,6 @@ import Token.*;
 
 public abstract class Node implements TokenComponent{
 
-	private Lines raw_data;
 	protected String html;
 	protected String startingTag;
 	protected String endingTag;
@@ -30,7 +29,6 @@ public abstract class Node implements TokenComponent{
 	
 	public Node(Lines lines)
 	{
-		this.raw_data=lines;
 		this.html = "";
 		this.setTag("", "");
 	}
@@ -38,10 +36,6 @@ public abstract class Node implements TokenComponent{
 	public Node(Lines lines, String start, String end){
 		this(lines);
 		this.setTag(start, end);
-	}
-	
-	public void setData(Lines lines){
-		this.raw_data = lines;
 	}
 	
 	public void setTag(String start, String end){
@@ -54,19 +48,23 @@ public abstract class Node implements TokenComponent{
 	}
 	
 	public void tokenize(Lines lines){
-		tokens = tokenizer.tokenize(lines.toString());
+		tokens = tokenizer.tokenize(lines);
+	}
+	
+	public void tokenize(String lines){
+		tokens = tokenizer.tokenize(lines);
 	}
 	
 	public String generate()
 	{
-		for(int i=0; i<tokens.size();i++)
+		for(int i = 0; i < tokens.size(); i++)
 		{
 			html+=tokens.get(i).generate();
 		}
 		
-		html = html.substring(0, html.length()-1);
+		html = html.trim();
 		
-		return startingTag+html+endingTag;
+		return startingTag+html+endingTag + "\n";
 	}
 	
 	//Creating using Factory Method pattern

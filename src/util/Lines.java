@@ -1,12 +1,12 @@
 package util;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
-public class Lines {
+public class Lines implements Iterable<String>{
 	private int lineNum;
 	private LinkedList<String> lines;
 	private NodeType lineType;
-	private int index = 0;
 	
 	public Lines(){
 		this.lineNum = 0;
@@ -46,30 +46,20 @@ public class Lines {
 	}
 	
 	public String lineAt(int i){
-		return this.lines.get(i);
+		String s;
+		try{
+			s = this.lines.get(i);
+		}catch(IndexOutOfBoundsException e){
+			return null;
+		}
+		
+		return s;
 	}
 	
 	public void setLine(int index, String s){
 		this.lines.set(index, s);
 	}
-	
-	public boolean hasNext(){
-		if(this.index >= this.lineNum)
-			return false;
-		else{
-			return true;
-		}
-	}
-	
-	public String next(){
-		try{
-			String output = this.lines.get(this.index++);
-			return output;
-		}catch(IndexOutOfBoundsException e){
-			return null;
-		}
-	}
-	
+		
 	@Override
 	public String toString(){
 		String s = "";
@@ -78,4 +68,25 @@ public class Lines {
 		
 		return s;
 	}
+	
+	@Override
+	public Iterator<String> iterator(){
+		Iterator<String> it = new Iterator<String>(){
+
+			private int index = 0;
+			
+			@Override
+			public boolean hasNext() {
+				return index < lineNum && lineAt(index) != null;
+			}
+
+			@Override
+			public String next() {
+				return lineAt(index++);
+			}
+		};
+		
+		return it;
+	}
 }
+

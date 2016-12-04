@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/header_test.md</name>
-			<type>1</type>
-			<locationURI>PROJECT_LOC/header_test.md</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>

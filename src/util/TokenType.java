@@ -5,10 +5,14 @@ public enum TokenType {
 	ESCAPE,
 	SPECIAL,
 	EMP,
+	STRONG,
 	HTML,
 	CODE,
 	AUTO,
 	INLINE,
 	REF,
-	IMPLICIT;
+	IMPLICIT,
+	INLINE_IMAGE,
+	REF_IMAGE,
+	NULL;
 }

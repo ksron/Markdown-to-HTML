@@ -10,24 +10,22 @@ public class Inline_Img extends Image{
 	{
 		super(input_str);
 		String img_info=input_str.substring(input_str.indexOf("(")+1);
-		String img_info_list[]=img_info.split(" ");
 		
-		if(img_info_list[0]!=null)
-		{
-			path_text=img_info_list[0];
-		}
+		path_text = img_info.substring(0, img_info.indexOf(" "));
 		
-		if(img_info_list[1]!=null)
-		{
-			title=img_info_list[1].substring(1, img_info_list[1].length()-2);
+		int title_start = img_info.indexOf("\"")+1;
+		if(title_start > 0){
+			int title_end = title_start + img_info.substring(title_start).indexOf("\"");
+			title = img_info.substring(title_start, title_end);
 		}
+
 	}	
 	
 	public String generate()
 	{
 		if(title!=null)
 		{
-			return "<a href="+"><img src="+path_text+" alt="+alt_text+"/>" + title + "</a>";
+			return "<img src="+path_text+" alt="+alt_text+" title=\"" + title + "\"/>";
 		}
 		else
 		{

@@ -39,9 +39,8 @@ class Header extends Node{
 			size = 6;
 		}
 
-		setData(lines);
 		setTag("<h"+size+">", "</h"+size+">");
-		tokenize(lines);
+		tokenize(lines.toString());
 	}
 	
 	@Override

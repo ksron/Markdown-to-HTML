@@ -13,7 +13,7 @@ class Paragraph extends Block{
 			lines.setLine(i,s.replaceAll("(\\t|[ ]{2,})\\n$", "<br />\n"));
 		}
 
-		tokenize(lines);
+		tokenize(lines.toString());
 	}
 	
 	@Override

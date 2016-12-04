@@ -3,7 +3,7 @@ package mdconverter;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import Node.Node;
+import Token.TokenComponent;
 
 public class Document implements MDElement{
 	private String input_file;
@@ -13,7 +13,7 @@ public class Document implements MDElement{
 	private String style;
 	public String converter;
 	
-	protected LinkedList<Node> nodes;
+	protected LinkedList<TokenComponent> nodes;
 
 	
 	public Document(){
@@ -26,21 +26,21 @@ public class Document implements MDElement{
 		this.setFormat(options.get("f"));
 		this.setStyle(options.get("s"));
 		this.setOutputDir(options.get("d"));
-		nodes = new LinkedList<Node>();
+		nodes = new LinkedList<TokenComponent>();
 	}
 
-	public void updateNode(Node node){
+	public void updateNode(TokenComponent node){
 		this.nodes.add(node);
 	}
 
-	public LinkedList<Node> getNodes(){
+	public LinkedList<TokenComponent> getNodes(){
 		return this.nodes;
 	}
 
 	public String generate(){
 		String s ="";
 		
-		Iterator<Node> it = nodes.iterator();
+		Iterator<TokenComponent> it = nodes.iterator();
 		while(it.hasNext()){
 			s += it.next().generate() + "\n";	
 		}
