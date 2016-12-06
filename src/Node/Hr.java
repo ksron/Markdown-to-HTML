@@ -7,7 +7,7 @@ class Hr extends Node{
 	
 	public Hr(Lines lines)
 	{
-		super(lines);
+		super();
 	}
 	
 	public String generate()

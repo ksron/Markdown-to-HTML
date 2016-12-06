@@ -17,7 +17,7 @@ public class Link_Addr extends Node{
 	
 	public Link_Addr(Lines lines)
 	{
-		super(lines);
+		super();
 		
 		if(lines!=null)
 		{

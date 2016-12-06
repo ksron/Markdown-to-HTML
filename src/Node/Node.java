@@ -24,17 +24,12 @@ public abstract class Node implements TokenComponent{
 	}
 	
 	public Node(){
-		this(new Lines());
-	}
-	
-	public Node(Lines lines)
-	{
 		this.html = "";
 		this.setTag("", "");
 	}
 
-	public Node(Lines lines, String start, String end){
-		this(lines);
+	public Node(String start, String end){
+		this();
 		this.setTag(start, end);
 	}
 	
@@ -46,6 +41,11 @@ public abstract class Node implements TokenComponent{
 	public ArrayList<TokenComponent> getTokenize(String s){
 		Tokenizer tokenizer=new Tokenizer();
 		return tokenizer.tokenize(s);
+	}
+	
+	public ArrayList<TokenComponent> getTokenize(Lines lines){
+		Tokenizer tokenizer=new Tokenizer();
+		return tokenizer.tokenize(lines);
 	}
 	
 	public void tokenize(Lines lines){
