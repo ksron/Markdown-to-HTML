@@ -29,3 +29,14 @@ Software Engineering Term project first assignment.
 Group S_
 
 \* literal asterisks \* this is an inline image ![Alt text](/path/to/imag.jpg "Optional Text")
+
+1. Our Team
+2. Is Doing
+3. Such a great job
+
+* Our team
+  * Our Team
+  * Is Doing
+  * Such a great job
+* Is Doing
+* Such a great job

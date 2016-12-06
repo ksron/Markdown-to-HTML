@@ -44,6 +44,7 @@ public abstract class Node implements TokenComponent{
 	}
 	
 	public ArrayList<TokenComponent> getTokenize(String s){
+		Tokenizer tokenizer=new Tokenizer();
 		return tokenizer.tokenize(s);
 	}
 	
