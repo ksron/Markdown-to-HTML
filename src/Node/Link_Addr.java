@@ -75,16 +75,16 @@ public class Link_Addr extends Node{
 		//set path_text
 		if(info_list[0].contains("<"))
 		{
-			path_text = info_list[0].substring(info_list[0].indexOf("<")+1, info_list[0].indexOf(">"));
+			path_text = info_list[0].substring(info_list[0].indexOf("<")+1, info_list[0].indexOf(">")).trim();
 		}
 		
 		else if(info_list[0].contains("http"))
 		{
-			path_text = info_list[0].substring(info_list[0].indexOf("http"), info_list[0].length());
+			path_text = info_list[0].substring(info_list[0].indexOf("http"), info_list[0].length()).trim();
 		}
 		else
 		{
-			path_text = info_list[0].substring(info_list[0].indexOf(":")+1);
+			path_text = info_list[0].substring(info_list[0].indexOf(":")+1).trim().replace("\\", "/");
 		}
 
 	}
