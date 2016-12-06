@@ -17,7 +17,7 @@ public class Auto extends Links
 		{
 			address = "<a href=\"mailto:"+address+"\">"+address+"</a>";
 		}
-		else //address of a webpage
+		else //address of a web page
 		{
 			address = "<a href=\""+address+"\">"+address+"</a>";
 		}
