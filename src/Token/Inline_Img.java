@@ -20,20 +20,9 @@ public class Inline_Img extends Image{
 		if(img_info_list.length==2)
 		{
 			title=img_info_list[1].substring(0, img_info_list[1].length());
+			text_token = "<img src=\""+path_text+"\" alt=\""+alt_text+ "\" title=\""+title+ "\" />";
 		}
-	}	
-	
-	public String generate()
-	{
-		if(title!=null)
-		{
-			return "<img src=\""+path_text+"\" alt=\""+alt_text+ "\" title=\""+title+ "\" />";
-		}
-
-		else
-		{
-			return "<img src=\""+path_text+"\" alt=\""+alt_text+"\"/>";
-		}
-	}
-	
+		else 
+			text_token = "<img src=\""+path_text+"\" alt=\""+alt_text+"\"/>";
+	}		
 }

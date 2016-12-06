@@ -115,7 +115,7 @@ public class Tokenizer {
 			}
 			
 			if(newlines.getLinesType() == NodeType.BLOCK)
-				this.tokenize(newlines.toString());
+				this.tokenize(newlines.toString().substring(0, newlines.toString().length()));
 			else 
 				tokens.add(Node.create(newlines));
 		}
@@ -123,33 +123,27 @@ public class Tokenizer {
 
 		return tokens;
 	}
+	
 	 // FIXME ... Need fix
 	public ArrayList<TokenComponent> tokenize(String input_str)
 	{
 		int i=0;
 		String temp="";
 		
-		for(i=0; i<input_str.length();i++)
+		for(i=0; i<input_str.length()-1;i++)
 		{
-			// EMP & STRONG
-			String pattern[] = {"^([ ]\\'[ ])(.)+?([ ]\\'[ ])",
-								"^\\\\[\\\\'\\*\\_\\{\\}\\[\\]\\(\\)\\#\\.\\!]",
-								"^[\\_|\\*]{2}(.)+?[\\_|\\*]{2}", 
-								"^[\\_|\\*]{1}(.)+?[\\_|\\*]{1}",
-								"^\\!\\[(.)+?\\]\\((.)+?\\)",
-								"^\\!\\[(.)+?\\]\\[[\\d\\w\\s]+\\]"
-								};
-			TokenType type[] = {TokenType.CODE, TokenType.ESCAPE, TokenType.STRONG, TokenType.EMP, 
-								TokenType.INLINE_IMAGE, TokenType.REF_IMAGE};
-			for(int patternNum = 0; patternNum < pattern.length; patternNum++){
-				Pattern p = Pattern.compile(pattern[patternNum]);
+			for(TokenType tokenInfo : TokenType.values()){
+				Pattern p = Pattern.compile(tokenInfo.pattern);
 				Matcher m = p.matcher(input_str.substring(i));
 				if(m.find()){
 					String out = m.group();
-					tokens.add(new PlainText(temp));
-					temp = "";
 					
-					switch(type[patternNum]){
+					if(tokenInfo != TokenType.PLAIN){
+						tokens.add(new PlainText(temp));
+						temp = "";
+					}
+					
+					switch(tokenInfo){
 					case CODE: 
 						tokens.add(new Code());
 						tokenize(out.substring(3, out.length()-3));
@@ -174,6 +168,31 @@ public class Tokenizer {
 					case REF_IMAGE:
 						tokens.add(new Ref_Img(out));
 						break;
+					case INLINE:
+						tokens.add(new Inline(out));
+						break;
+					case IMPLICIT:
+						tokens.add(new Implicit(out));
+						break;
+					case REF:
+						tokens.add(new Ref(out));
+						break;
+					case AUTO:
+						tokens.add(new Auto(out));
+						break;
+					case HTML:
+						tokens.add(new HtmlCode(out));
+						break;
+					case SPECIAL:
+						tokens.add(new SpecialChar(out));
+						break;
+					case NULL:
+						temp += out;
+						break;
+					case PLAIN:
+						temp += out;
+						i--;
+						break;
 					default:
 						break;
 					}
@@ -181,73 +200,6 @@ public class Tokenizer {
 					i = i + m.end();
 	
 				}
-			}
-			
-			if(input_str.charAt(i) == ('['))
-			{
-				tokens.add(new PlainText(temp));
-				temp="";
-				
-				// INLINE
-				if(input_str.substring(i).contains("(") && input_str.substring(i).contains(")"))
-				{
-					tokens.add(new Inline(input_str.substring(i,input_str.indexOf(")",i+1)+1)));
-					i+=(input_str.substring(i,input_str.indexOf(")",i+1)+1)).length()-1;
-				}
-				
-				//IMPLICIT
-				else if(input_str.substring(i).contains("[]"))
-				{
-					int index=input_str.indexOf("[", i+1);
-					index=input_str.indexOf("]", index);
-					tokens.add(new Implicit(input_str.substring(i,index+1)));
-					i+=(input_str.substring(i,index+1)).length()-1;
-				}
-				else
-				{
-					int index=input_str.indexOf("[", i+1);
-					index=input_str.indexOf("]", index);
-					tokens.add(new Ref(input_str.substring(i,index+1)));
-					i+=(input_str.substring(i,index+1)).length()-1;
-				}
-			}
-			
-			//SPECIAL CHAR
-			else if(input_str.charAt(i) == ('&'))
-			{
-				tokens.add(new PlainText(temp));
-				temp="";
-				
-				tokens.add(new SpecialChar(input_str.substring(i,i+1)));
-			}
-			else if(input_str.charAt(i) == ('<'))
-			{
-				tokens.add(new PlainText(temp));
-				temp="";
-				
-				if(!input_str.substring(i).contains(">"))
-				{
-					tokens.add(new SpecialChar(input_str.substring(i,i+1)));
-				}
-				else
-				{
-					int index=input_str.indexOf(">",i);
-					if((input_str.substring(i, index+1)).contains("."))
-					{
-						tokens.add(new Auto(input_str.substring(i,index+1)));
-						i+=(input_str.substring(i,index+1)).length()-1;
-					}
-					else
-					{
-						//index=input_str.indexOf(">",index+1);
-						tokens.add(new HtmlCode(input_str.substring(i,index+1)));
-						i+=(input_str.substring(i,index+1)).length()-1;
-					}
-				}
-			}
-			else
-			{
-				temp=temp+input_str.charAt(i);
 			}
 		}
 		if(temp!=null)

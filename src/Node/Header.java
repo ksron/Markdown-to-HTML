@@ -10,7 +10,7 @@ class Header extends Node{
 
 	public Header(Lines lines)
 	{
-		super(lines);
+		super();
 		
 		lines.setLine(0, lines.lineAt(0).replaceFirst("\\s{0,3}", ""));
 		if(lines.lineAt(0).charAt(0) == '#'){

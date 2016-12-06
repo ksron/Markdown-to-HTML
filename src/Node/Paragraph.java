@@ -7,7 +7,7 @@ class Paragraph extends Block{
 		
 	public Paragraph(Lines lines)
 	{		
-		super(lines, "<p>", "</p>");
+		super("<p>", "</p>");
 		for(int i = 0; i < lines.getLineNum(); i++){
 			String s = lines.lineAt(i);
 			lines.setLine(i,s.replaceAll("(\\t|[ ]{2,})\\n$", "<br />\n"));
