@@ -19,8 +19,6 @@ public class generator implements MDElementVisitor{
 //String filename = new option_input.filename();
 	//얘는 나중에 CLI에서 input file 체크해서 method로 return 하는 거 받아서 받아 쓰려고 만들었습니다.
 	private String b;
-	private String c;
-	private String d;
 	
 	public void visit(Document doc){
 		String a;
@@ -29,12 +27,11 @@ public class generator implements MDElementVisitor{
 		a += "<head><title> MDConverter </title></head>";
 		a += "<html>\n"+"<body>\n"+doc.generate()+"</body>\n"+"</html>";//Generator
 		b= doc.getOutputFile();//Output file's name
-		c= doc.getOutputDir();//Output File's direction
-		d= doc.getFormat();//Output File's Style
+
 		
 		if(validateHTML(a))
 			try{
-				FileWriter w_file = new FileWriter(c+ "\\" +b+ "." +d);
+				FileWriter w_file = new FileWriter(b);
 				
 				System.out.println("\n" + a);
 				w_file.write(a);		

@@ -1,6 +1,5 @@
 package Node;
 
-import Token.TokenComponent;
 import util.Lines;
 
 class Header extends Node{
@@ -41,10 +40,5 @@ class Header extends Node{
 
 		setTag("<h"+size+">", "</h"+size+">");
 		tokenize(lines.toString());
-	}
-	
-	@Override
-	public void add(TokenComponent token){
-		throw new UnsupportedOperationException();
 	}
 }

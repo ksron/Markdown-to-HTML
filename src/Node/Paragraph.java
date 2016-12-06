@@ -1,6 +1,5 @@
 package Node;
 
-import Token.TokenComponent;
 import util.Lines;
 
 class Paragraph extends Block{
@@ -14,10 +13,5 @@ class Paragraph extends Block{
 		}
 
 		tokenize(lines.toString());
-	}
-	
-	@Override
-	public void add(TokenComponent token){
-		throw new UnsupportedOperationException();
 	}
 }

@@ -14,11 +14,6 @@ public abstract class Node implements TokenComponent{
 	protected Tokenizer tokenizer = new Tokenizer();
 	protected ArrayList<TokenComponent> tokens = new ArrayList<TokenComponent>();
 	
-	@Override
-	public void add(TokenComponent token){
-		tokens.add(token);
-	}
-	
 	public TokenComponent getChild(int i){
 		return (TokenComponent)tokens.get(i);
 	}

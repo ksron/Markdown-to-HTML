@@ -13,12 +13,5 @@ public abstract class Token implements TokenComponent{
 	{
 		return string_text;
 	}
-
-	@Override
-	public void add(TokenComponent token) {
-		throw new UnsupportedOperationException();
-	}
-	
-
 }
 

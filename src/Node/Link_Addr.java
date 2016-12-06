@@ -2,8 +2,6 @@ package Node;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-
-import Token.TokenComponent;
 import util.Lines;
 
 public class Link_Addr extends Node{
@@ -99,13 +97,6 @@ public class Link_Addr extends Node{
 	{
 		return path_text;
 	}	
-
-	
-	@Override
-	public void add(TokenComponent token){
-		throw new UnsupportedOperationException();
-	}
-	
 	
 	@Override
 	public String generate(){
