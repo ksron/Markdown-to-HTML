@@ -14,7 +14,7 @@ class Code_Block extends Block{
 			lines.setLine(i, lines.lineAt(i).replaceFirst("([ ]{4}|\t)", ""));
 			lines.setLine(i, lines.lineAt(i).replaceAll("&", "&amp;"));
 			lines.setLine(i, lines.lineAt(i).replaceAll("<", "&lt;"));
-			lines.setLine(i, lines.lineAt(i).replaceAll(">", "&lt;"));
+			lines.setLine(i, lines.lineAt(i).replaceAll(">", "&gt;"));
 		}
 		
 		codeLines = lines;
