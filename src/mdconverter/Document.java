@@ -54,7 +54,7 @@ public class Document implements MDElement{
 	}
 	
 	public String getOutputFile() {
-		return output_dir + "\\" + output_file + "\\." + format;
+		return output_dir + "\\" + output_file + "." + format;
 	}
 
 	public String getStyle() {
