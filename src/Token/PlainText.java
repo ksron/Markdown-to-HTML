@@ -6,6 +6,4 @@ public class PlainText extends Token
 	{
 		super(text_token);
 	}
-	
-	//PlaniText use 'generate()' of Token.class
 }
