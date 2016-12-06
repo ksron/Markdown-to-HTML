@@ -1,6 +1,5 @@
 package Token;
 
-//done
 public class PlainText extends Token
 {
 	public PlainText(String text_token) 
