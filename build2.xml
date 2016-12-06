@@ -41,7 +41,6 @@
 			 <include name="Token/"/>
 			 <include name="util/"/>
 			 <include name="mdconverter/"/>
-			 <exclude name="org/"/>
 		 </fileset>
 	  </javadoc>
    </target>
@@ -55,36 +54,39 @@
    </target>
 
    <target name="clean_report" description="cleaning up javadoc files">
-      <delete dir="report"/>
+      <delete dir="${report.dir}"/>
    </target>
 
    	<target name="test" depends ="build">
-		<junit showoutput="true" printsummary="on" enabletestlistenerevents="true" fork="true">
+		<junit showoutput="false" printsummary="on" enabletestlistenerevents="true" fork="true" forkmode="perBatch">
 			<classpath path="classes" />
 			<classpath path="lib/junit.jar" />
 			<classpath path="lib/hamcrest-core.jar" />
 			<classpath path="lib/jtidy.jar" />
 			<formatter type="plain" usefile="false" />
-			<batchtest><fileset dir="classes/Test"/></batchtest>
+			<batchtest>
+			<fileset dir="classes/Test">
+				<include name="**/*Test.class" />
+			</fileset>
+			</batchtest>
 		</junit>
 	</target>
 
 	<target name="cov-test" depends ="build">
-		<jacoco:coverage>
-			<junit showoutput="true" printsummary="on" enabletestlistenerevents="true" fork="true">
-				<classpath path="classes" />
-				<classpath path="lib/junit.jar" />
-				<classpath path="lib/hamcrest-core.jar" />
-				<formatter type="plain" usefile="false" />
-				<batchtest><fileset dir="classes/Test"/></batchtest>
-			</junit>
-		</jacoco:coverage>
 
-		<jacoco:coverage>
-			<java classname="Coverage Test" fork="true">
+
+		<jacoco:coverage destfile="jacoco.exec">
+			<java classname="mdconverter.MDConverter" fork="true">
+					<arg value="${file1}"/>
+					<arg value="${file2}"/>
+					<arg value="${file3}"/>
+				    <arg value="${file4}"/>
+					<arg value="${file5}"/>
+
 				<classpath path="classes" />
 				<classpath path="lib/junit.jar" />
 				<classpath path="lib/hamcrest-core.jar" />
+				<classpath path="lib/jtidy.jar" />
 			</java>
 		</jacoco:coverage>
 	</target>
@@ -93,10 +95,10 @@
 		<jacoco:report>
 
 			<executiondata>
-
+				<fileset file="jacoco.exec" />
 			</executiondata>
 
-			<structure name="Simple">
+			<structure name="Coverage-Report">
 				<classfiles>
 					<fileset dir="classes" />
 				</classfiles>
