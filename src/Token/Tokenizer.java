@@ -186,12 +186,11 @@ public class Tokenizer {
 					case SPECIAL:
 						tokens.add(new SpecialChar(out));
 						break;
+					case PLAIN:
+						i--;
+					case COPY:
 					case NULL:
 						temp += out;
-						break;
-					case PLAIN:
-						temp += out;
-						i--;
 						break;
 					default:
 						break;
