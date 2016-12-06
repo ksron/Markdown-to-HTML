@@ -8,7 +8,7 @@ class Quoted_Block extends Node{
 
 	public Quoted_Block(Lines lines)
 	{
-		super(lines, "<blockquote>", "</blockquote>");
+		super("<blockquote>", "</blockquote>");
 		
 
 		for(int i = 0; i < lines.getLineNum(); i++){

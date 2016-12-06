@@ -14,7 +14,7 @@ abstract class Item_List extends Node{
 	
 	public Item_List(Lines lines)
 	{	
-		super(lines);
+		super();
 		
 		for(int i=0; i<lines.getLineNum();)
 		{
@@ -27,8 +27,8 @@ abstract class Item_List extends Node{
 					new_lines.append(lines.lineAt(i).replaceFirst("( )+", ""));
 					i++;
 				}
-				Tokenizer tokenizer=new Tokenizer();
-				item_array.add(tokenizer.tokenize(new_lines));
+
+				item_array.add(getTokenize(new_lines));
 			}
 			else
 			{

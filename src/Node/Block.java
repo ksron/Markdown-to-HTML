@@ -7,11 +7,11 @@ class Block extends Node{
 
 	public Block(Lines lines)
 	{
-		super(lines);
+		super();
 	}
 
-	public Block(Lines lines, String start, String end) {
-		super(lines, start, end);
+	public Block(String start, String end) {
+		super(start, end);
 	}	
 	
 	@Override
