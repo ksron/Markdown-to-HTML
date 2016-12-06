@@ -27,7 +27,7 @@ class Unord_List extends Item_List{
 			str_list.add(temp);
 		}
 		temp="";
-		for(int i=0; i<str_list.size();i++)
+		for(int i=0; i<str_list.size()-1;i++)
 		{
 			if(str_list.get(i).contains("<ol>")|| str_list.get(i).contains("<ul>"))
 			{

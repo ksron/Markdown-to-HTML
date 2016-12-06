@@ -63,7 +63,7 @@ public class generator implements MDElementVisitor{
 		
 		System.out.println("\nerrors "+tidy.getParseErrors());
 	    System.out.println("warnings "+tidy.getParseWarnings());
-	    
+	   
 	    return (tidy.getParseErrors() == 0 && tidy.getParseWarnings()-2 == 0);
 	}
 }
