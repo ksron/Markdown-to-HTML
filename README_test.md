@@ -70,5 +70,16 @@ examples)
 __Caution__: Basically tool searches file in 'Tool's directory'. And if there is a same output's name in same directory, this tool will ask you a question that overwrite or not. if you put 'y or Y' command, it will overwrite, if you put 'n' or 'N' command, it will not overwrite and terminate. 
  
 _Handong Global University.
-Software Engineering Term project first assignment.
+Software Engineering Term pr&oject first assignment.
 Group S_
+
+1. Our Team
+2. Is Doing
+3. Such a great job
+
+* Our team
+  * Our Team
+  * Is Doing
+  * Such a great job
+* Is Doing
+* Such a great job
