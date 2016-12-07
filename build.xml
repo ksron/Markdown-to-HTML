@@ -15,11 +15,13 @@
    <property name="doc.dir" location="doc"/>
    <property name="javadoc.dir" location="doc\javadoc"/>
    <property name="report.dir" location="report"/>
+   <property name="test.dir" location="test" />
 
    <target name="init" description="creating classes and javadoc directories if deleted">
       <mkdir dir="${build.dir}"/>
       <mkdir dir="${javadoc.dir}"/>
 	  <mkdir dir="${report.dir}"/>
+	  <mkdir dir="${build.dir}/Test" />
    </target>
 
    <target name="build" depends="init" description="project build">
@@ -28,6 +30,14 @@
 			<classpath path="lib/hamcrest-core.jar" />
 			<classpath path="lib/jtidy.jar" />
 	  </javac>
+
+      <javac srcdir="${test.dir}" destdir="${build.dir}/Test" debug="true" includeantruntime="false">
+			<classpath path="classes" />
+			<classpath path="lib/junit.jar" />
+			<classpath path="lib/hamcrest-core.jar" />
+			<classpath path="lib/jtidy.jar" />
+	  </javac>
+
    </target>
 
    <target name="make_jar" depends="build" description="making a jar file">
@@ -53,51 +63,40 @@
       <delete dir="${javadoc.dir}"/>
    </target>
 
-   <target name="clean_report" description="cleaning up javadoc files">
+   <target name="clean_report" description="cleaning up report files">
       <delete dir="${report.dir}"/>
    </target>
 
    	<target name="test" depends ="build">
 		<junit showoutput="false" printsummary="on" enabletestlistenerevents="true" fork="true" forkmode="perBatch">
-			<classpath path="classes" />
+			<classpath path="${build.dir}" />
+			<classpath path="${build.dir}/Test" />
 			<classpath path="lib/junit.jar" />
 			<classpath path="lib/hamcrest-core.jar" />
 			<classpath path="lib/jtidy.jar" />
 			<formatter type="plain" usefile="false" />
 			<batchtest>
-			<fileset dir="classes/Test">
+			<fileset dir="${build.dir}/Test">
 				<include name="**/*Test.class" />
 			</fileset>
 			</batchtest>
 		</junit>
 	</target>
 
-	<target name="cov-test" depends ="build">
+<target name="cov-test" depends ="build">
 
 		<jacoco:coverage>
-				<junit showoutput="false" printsummary="on" enabletestlistenerevents="true" fork="true" forkmode="perBatch">
+				<junit showoutput="false" printsummary="on" enabletestlistenerevents="true" fork="true">
 					<classpath path="classes" />
+					<classpath path="classes/Test" />
 					<classpath path="lib/junit.jar" />
 					<classpath path="lib/hamcrest-core.jar" />
 					<classpath path="lib/jtidy.jar" />
 					<formatter type="plain" usefile="false" />
-					<batchtest>
-					<fileset dir="classes/Test">
-						<include name="**/*Test.class" />
-					</fileset>
-					</batchtest>
+					<test name="MDconverterTest" />
 				</junit>
 		</jacoco:coverage>
 
-		<jacoco:coverage>
-			<java classname="mdconverter.MDConverter" fork="true">
-					<arg value="${file1}"/>
-				<classpath path="classes" />
-				<classpath path="lib/junit.jar" />
-				<classpath path="lib/hamcrest-core.jar" />
-				<classpath path="lib/jtidy.jar" />
-			</java>
-		</jacoco:coverage>
 	</target>
 
 	<target name="cov-report" depends="cov-test">
