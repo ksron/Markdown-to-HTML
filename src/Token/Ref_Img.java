@@ -25,7 +25,7 @@ public class Ref_Img extends Image{
 		else
 		{
 			if(link_addr.getTitle()!="")
-				return "<img src=\""+link_addr.getPath_text()+"\" alt=\""+alt_text+ "\" title=\""+link_addr.getTitle()+ "\" />";
+				return "<img src=\""+link_addr.getPath_text()+"\" alt=\""+alt_text+ "\" title=\""+link_addr.getTitle()+ "\"/>";
 			else
 				return "<img src=\""+link_addr.getPath_text()+"\" alt=\""+alt_text+"\"/>";
 		}
