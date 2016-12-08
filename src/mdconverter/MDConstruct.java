@@ -3,10 +3,6 @@ package mdconverter;
 import java.util.LinkedList;
 
 import Node.Node;
-/*
-  얘는 MDConstruct.
- Visit 담아 두는 Construct 입니다.
- */
 
 public class MDConstruct implements MDElement, Cloneable{
 	int i=0;
@@ -17,7 +13,6 @@ public class MDConstruct implements MDElement, Cloneable{
 		
 	}
 	public MDConstruct(Document document) {	
-		// TODO Auto-generated constructor stub/
 		parts = new MDElement[] {document};
 	}
 		
