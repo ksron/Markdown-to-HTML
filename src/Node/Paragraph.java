@@ -2,10 +2,10 @@ package Node;
 
 import util.Lines;
 
-class Paragraph extends Block{
-		
+public class Paragraph extends Block{
+
 	public Paragraph(Lines lines)
-	{		
+	{
 		super("<p>", "</p>");
 		for(int i = 0; i < lines.getLineNum(); i++){
 			String s = lines.lineAt(i);

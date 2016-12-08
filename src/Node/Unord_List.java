@@ -5,20 +5,20 @@ import java.util.ArrayList;
 import util.Lines;
 
 public class Unord_List extends Item_List{
-	
+
 	public Unord_List(Lines lines)
 	{
 		super(lines, "<ul>", "</ul>");
 	}
-	
+
 	public String generate()
 	{
 		String temp="";
 		String ret_str = "";
 		ArrayList<String> str_list=new ArrayList<String>();
-		
+
 		for(int i=0; i<item_array.size();i++)
-		{	
+		{
 			temp="";
 			for(int j=0; j<item_array.get(i).size();j++)
 			{
@@ -27,7 +27,7 @@ public class Unord_List extends Item_List{
 			str_list.add(temp);
 		}
 		temp="";
-		for(int i=0; i<str_list.size();i++)
+		for(int i=0; i<str_list.size()-1;i++)
 		{
 			if(str_list.get(i).contains("<ol>")|| str_list.get(i).contains("<ul>"))
 			{

@@ -2,7 +2,7 @@ package Node;
 
 import util.Lines;
 
-abstract class Block extends Node{
+public abstract class Block extends Node{
 
 	public Block(Lines lines)
 	{
@@ -11,5 +11,5 @@ abstract class Block extends Node{
 
 	public Block(String start, String end) {
 		super(start, end);
-	}	
+	}
 }

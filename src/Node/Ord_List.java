@@ -4,7 +4,7 @@ import util.Lines;
 import java.util.*;
 
 public class Ord_List extends Item_List{
-	
+
 	public Ord_List(Lines lines)
 	{
 		super(lines, "<ol>", "</ol>");
@@ -15,9 +15,9 @@ public class Ord_List extends Item_List{
 		String temp="";
 		String ret_str = "";
 		ArrayList<String> str_list=new ArrayList<String>();
-		
+
 		for(int i=0; i<item_array.size();i++)
-		{	
+		{
 			temp="";
 			for(int j=0; j<item_array.get(i).size();j++)
 			{
@@ -26,7 +26,7 @@ public class Ord_List extends Item_List{
 			str_list.add(temp);
 		}
 		temp="";
-		for(int i=0; i<str_list.size();i++)
+		for(int i=0; i<str_list.size()-1;i++)
 		{
 			if(str_list.get(i).contains("<ol>")|| str_list.get(i).contains("<ul>"))
 			{
