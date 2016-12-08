@@ -26,6 +26,7 @@
 
    <target name="build" depends="init" description="project build">
       <javac srcdir="${src.dir}" destdir="${build.dir}" debug="true" includeantruntime="false">
+			<classpath path="classes" />
 			<classpath path="lib/junit.jar" />
 			<classpath path="lib/hamcrest-core.jar" />
 			<classpath path="lib/jtidy.jar" />
@@ -36,12 +37,19 @@
 			<classpath path="lib/junit.jar" />
 			<classpath path="lib/hamcrest-core.jar" />
 			<classpath path="lib/jtidy.jar" />
-	  </javac>
+	
+	</javac>
 
    </target>
 
    <target name="make_jar" depends="build" description="making a jar file">
-      <jar destfile="${lib.dir}\md_html.jar" basedir="${build.dir}"/>
+      <jar destfile="${lib.dir}\md_html.jar" basedir="${build.dir}">
+		<manifest>
+			<attribute name="Main-Class" value="mdconverter.MDConverter" />
+			<attribute name="Class-Path" value="jtidy.jar hamcrest-core.jar junit.jar" />
+		</manifest>
+	  </jar>
+   
    </target>
 
    <target name="make_doc" depends="init" description="making javadocs">
@@ -67,10 +75,10 @@
       <delete dir="${report.dir}"/>
    </target>
 
-   	<target name="test" depends ="build">
+   	<target name="test" depends ="build" description="This is for checking unit Test">
 		<junit showoutput="false" printsummary="on" enabletestlistenerevents="true" fork="true" forkmode="perBatch">
 			<classpath path="${build.dir}" />
-			<classpath path="${build.dir}/Test" />
+			<classpath path="${build.dir}/test" />
 			<classpath path="lib/junit.jar" />
 			<classpath path="lib/hamcrest-core.jar" />
 			<classpath path="lib/jtidy.jar" />
@@ -83,18 +91,22 @@
 		</junit>
 	</target>
 
-<target name="cov-test" depends ="build">
+<target name="cov-test" depends ="build" description="This is for checking coverage Test">
 
 		<jacoco:coverage>
-				<junit showoutput="false" printsummary="on" enabletestlistenerevents="true" fork="true">
-					<classpath path="classes" />
-					<classpath path="classes/Test" />
-					<classpath path="lib/junit.jar" />
-					<classpath path="lib/hamcrest-core.jar" />
-					<classpath path="lib/jtidy.jar" />
-					<formatter type="plain" usefile="false" />
-					<test name="MDconverterTest" />
-				</junit>
+			<junit showoutput="false" printsummary="on" enabletestlistenerevents="true" fork="true" forkmode="perBatch">
+			<classpath path="${build.dir}" />
+			<classpath path="${build.dir}/test" />
+			<classpath path="lib/junit.jar" />
+			<classpath path="lib/hamcrest-core.jar" />
+			<classpath path="lib/jtidy.jar" />
+			<formatter type="plain" usefile="false" />
+			<batchtest>
+			<fileset dir="${build.dir}/Test">
+				<include name="**/*Test.class" />
+			</fileset>
+			</batchtest>
+		</junit>
 		</jacoco:coverage>
 
 	</target>
@@ -108,7 +120,10 @@
 
 			<structure name="Coverage-Report">
 				<classfiles>
-					<fileset dir="classes" />
+					<fileset dir="classes">
+						<exclude name="org" />
+						<exclude name="lib/jtidy"/>
+					</fileset>
 				</classfiles>
 				<sourcefiles>
 					<fileset dir="src" />
