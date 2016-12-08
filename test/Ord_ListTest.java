@@ -27,8 +27,11 @@ public class Ord_ListTest {
 	     for(int i=0; i < values.size();i++)
 	      {
 	    	 Lines temp=new Lines();
-	    	 temp.append(values.get(i));
-	         Ord_List test_case = new Ord_List(temp);
+	    	 String temp_list[]=values.get(i).split("\n");
+	    	 temp.append(temp_list[0]);
+	    	 temp.append(temp_list[1]);
+	    	 temp.append(temp_list[2]);
+	    	 Ord_List test_case = new Ord_List(temp);
 	         assertEquals(test_case.generate(),converted.get(i));
 	      }   
 	}

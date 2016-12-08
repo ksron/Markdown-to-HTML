@@ -3,7 +3,7 @@ package Node;
 import util.Lines;
 import java.util.*;
 
-class Ord_List extends Item_List{
+public class Ord_List extends Item_List{
 	
 	public Ord_List(Lines lines)
 	{
@@ -26,7 +26,7 @@ class Ord_List extends Item_List{
 			str_list.add(temp);
 		}
 		temp="";
-		for(int i=0; i<str_list.size()-1;i++)
+		for(int i=0; i<str_list.size();i++)
 		{
 			if(str_list.get(i).contains("<ol>")|| str_list.get(i).contains("<ul>"))
 			{

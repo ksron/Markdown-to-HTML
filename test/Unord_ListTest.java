@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import Node.Ord_List;
 import Node.Unord_List;
 import util.Lines;
 
@@ -29,8 +30,11 @@ public class Unord_ListTest {
 	     for(int i=0; i < values.size();i++)
 	      {
 	    	 Lines temp=new Lines();
-	    	 temp.append(values.get(i));
-	         Unord_List test_case = new Unord_List(temp);
+	    	 String temp_list[]=values.get(i).split("\n");
+	    	 temp.append(temp_list[0]);
+	    	 temp.append(temp_list[1]);
+	    	 temp.append(temp_list[2]);
+	    	 Unord_List test_case = new Unord_List(temp);
 	         assertEquals(test_case.generate(),converted.get(i));
 	      }   
 	}

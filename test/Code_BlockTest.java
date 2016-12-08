@@ -21,10 +21,10 @@ public class Code_BlockTest {
 		values.add("	This is a simple code block with >");
 		
 		converted = new LinkedList<String>();
-		converted.add("<pre><code>This is a simple code block</code></pre>");
-		converted.add("<pre><code>This is a simple code block with &amp;</code></pre>");
-		converted.add("<pre><code>This is a simple code block with &lt;</code></pre>");
-		converted.add("<pre><code>This is a simple code block with &gt;</code></pre>");
+		converted.add("<pre><code>This is a simple code block</code></pre>\n");
+		converted.add("<pre><code>This is a simple code block with &amp;</code></pre>\n");
+		converted.add("<pre><code>This is a simple code block with &lt;</code></pre>\n");
+		converted.add("<pre><code>This is a simple code block with &gt;</code></pre>\n");
 	}
 	@Test
 	public void testCodeBlock() {
