@@ -23,7 +23,7 @@ public class Tokenizer {
 		
 		Iterator<String> it = lines.iterator();
 		String s = it.next().replaceFirst("\\s+$", "");
-		while(it.hasNext()){
+		while(it.hasNext() || s != null){
 			LineType type = LineType.getLineType(s);
 			Lines newlines = new Lines();
 			try{
@@ -151,12 +151,12 @@ public class Tokenizer {
 						break;
 					case STRONG:
 						tokens.add(new Strong());
-						tokenize(out.substring(2, out.length()-2));
+						tokenize(out.substring(2, out.length()-1));
 						tokens.add(new Strong_close());
 						break;
 					case EMP:
 						tokens.add(new Emp());
-						tokenize(out.substring(1, out.length()-1));
+						tokenize(out.substring(1, out.length()));
 						tokens.add(new Emp_close());
 						break;
 					case ESCAPE:
