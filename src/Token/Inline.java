@@ -18,7 +18,7 @@ public class Inline extends Links
 		    String title = text_token.substring(k1+1, k2);
 		    text_token = "<a href= \"" + link_url + "\" title = \""+title+"\">"+link_text+"</a>";
 		}
-
+		else
 		text_token = "<a href= \"" + link_url + "\">"+link_text+"</a>";
 	}
 }
