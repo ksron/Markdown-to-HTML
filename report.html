@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN"><head><title> MDConverter </title></head><html>
+<body>
+<p><img src="Logo2.png" alt="logo"/></p>
+
+<h1>Mark Down Converter</h1>
+
+<p><strong>Markdown Converter</strong> is for translating '.md' file to various types of file. It will convert <a href= "http://daringfireball.net/projects/markdown/">Markdown</a> to HTML, SLIDE HTML, etc.</p>
+
+<hr>
+<h3>How To Use?</h3>
+
+<p><strong>A Java file(option<em>input.java)</em></strong> is a tool for Markdown Converter.
+In this program, basically we call '.md' file, and decide conversion type, Output's name, Output's style, and Where we saves. Now, our steps of developing is not enough for showing all options. Basically we design converter <strong>'.md' -> '.html'</strong></p>
+
+<hr>
+<hr>
+<h2>Tool's Command:</h2>
+
+<pre><code>mdconverter (-h) 
+	    {input_file}
+	    {input_file} [options]</code></pre>
+
+<p>examples)</p>
+
+<pre><code>Readme.md -o hello            (o)
+Hongshin.md -o                (x - No argument)
+Hongshin.md                   (o - Default)
+-h                            (o - Call help)
+Hongshin.md -h                (x - Wrong Option)
+Readme.md -o hello -f html    (o)</code></pre>
+
+<ul><li>(-h): Show help messages. mdconverter -h.</li></ul>
+<pre><code>***********Markdown Converter**********
+mdconverter (-h)
+	    {input_file}
+	    {input_file} [options]      
+***************************************
+(-h): Show help message.</code></pre>
+
+<pre><code>{input_file}: Input file's name. You can add name extension ".md" or not. But this program only find '.md' File.
+	      If computer does not find input file, it will send error message.
+	      If you put only {input_file}, "{input_file}.html" file will be made (same name, but '.html').</code></pre>
+
+<pre><code>[options]: 
+	-o  (filename) : Make html file which name is
+			 We do not allow file's name extension. You can decide file's type(format) using '-f'
+	-f  (format)   : Decide output's format type. Only '.html' is allowed in this version.
+	-s  (style)    : Decide output's style type (plain, fancy, slide). Only 'lower case' is allowed in (style). 
+			 If style is plain, '(filename).html' will be made, any others,
+			'(filename)_(style).html' will be made.
+	-d  (direction): Decide where will you put the file. You can decide directory address.
+			 End of address, you can add '\' or not. Both are allowed.
+       ---------- Shortkut Key Usage ----------           
+       This is for shortkut key.
+	-1 : Command 1 
+	-2 : Command 2
+	-3 : Command 3</code></pre>
+
+<ul><li>{input<em>file}: Input File's name. If file does not exist, it will send error message. If user put only {input</em>file}, '{input_file}.html' will be made in same directory.</li><li>[options]: Choose options for converting '.md' file. This options does not impact by ordering. User can use both 'Upper' and 'Lower' case in options. But do not allow no arguments.(ex, only '-o', '-f' with no arguments.).</li></ul>
+<pre><code>-o   (filename) : Make html file which name is decided by user. Do not allow file's extension.
+-f   (format)   : Decide output's format type. Only '.html' is allowed in this version.
+-s   (style)    : Decide output's style type (plain, fancy, slide). Only 'lower case' is allowed in (style).
+		  If style is plain, '(filename).html' will be made, any others, 
+		  '(filename)_(style).html' will be made.
+-d   (direction): Decide where will you put the file. You can decide directory address.
+		  End of address, you can add '\' or not. Both are allowed.
+-1              : Command 1
+-2              : Command 2
+-3              : Command 3</code></pre>
+
+<hr>
+<p><strong>Caution</strong>: Basically tool searches file in 'Tool's directory'. And if there is a same output's name in same directory, this tool will ask you a question that overwrite or not. if you put 'y or Y' command, it will overwrite, if you put 'n' or 'N' command, it will not overwrite and terminate.</p>
+
+<p>_Handong Global University.
+Software Engineering Term pr&amp;oject first assignment.
+Group S_</p>
+
+<ol><li>Our Team</li><li>Is Doing</li><li>Such a great job</li></ol>
+<ul><li>Our team<ul><li>Our Team</li><li>Is Doing</li></ul></li><li>Is Doing</li><li>Such a great job</li></ul>
+<p>: &amp;, &amp;amp, &amp;lt, &amp;gt, <, >,  ><, <>, ", '</p>
+
+<blockquote>Help me sandklfn
+asndlfknasdlfknasdlkf
+nasdlfandslfkn</blockquote>
+
+<ol><li>Our team<ol><li>our Team</li><li>Is Doing</li></ol></li><li>Is Doing</li><li>Such a great job</li></ol>
+<p><img src="Logo2.png" alt="logo"/></p>
+
+
+
+</body>
+</html>

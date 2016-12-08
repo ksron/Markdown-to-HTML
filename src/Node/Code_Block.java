@@ -2,10 +2,10 @@ package Node;
 
 import util.Lines;
 
-class Code_Block extends Block{
-	
+public class Code_Block extends Block{
+
 	Lines codeLines = new Lines();
-	
+
 	public Code_Block(Lines lines)
 	{
 		super("<pre><code>", "</code></pre>");
@@ -16,19 +16,19 @@ class Code_Block extends Block{
 			lines.setLine(i, lines.lineAt(i).replaceAll("<", "&lt;"));
 			lines.setLine(i, lines.lineAt(i).replaceAll(">", "&gt;"));
 		}
-		
+
 		codeLines = lines;
 	}
-	
+
 	public String generate()
 	{
 		for(int i = 0; i < codeLines.getLineNum(); i++)
 		{
 			html += codeLines.lineAt(i);
 		}
-		
+
 		html = html.trim();
-		
+
 		return startingTag+html+endingTag + "\n";
 	}
 }

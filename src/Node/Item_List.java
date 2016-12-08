@@ -5,15 +5,15 @@ import java.util.*;
 import Token.TokenComponent;
 import util.Lines;
 
-abstract class Item_List extends Node{
-	
+public abstract class Item_List extends Node{
+
 	protected int num_elem=0;
 	protected ArrayList<ArrayList<TokenComponent>> item_array=new ArrayList<ArrayList<TokenComponent>>();
-	
+
 	public Item_List(Lines lines)
-	{	
+	{
 		super();
-		
+
 		for(int i=0; i<lines.getLineNum();)
 		{
 			String temp="";
@@ -40,5 +40,5 @@ abstract class Item_List extends Node{
 	public Item_List(Lines lines, String start, String end) {
 		this(lines);
 		setTag(start, end);
-	}	
+	}
 }
