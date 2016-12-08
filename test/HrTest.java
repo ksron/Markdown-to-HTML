@@ -8,9 +8,9 @@ import Node.Hr;
 import util.Lines;
 
 public class HrTest {
-	
+
 	private static LinkedList<String> values;
-	 
+
 	@BeforeClass
 	public static void setUpList(){
 		values = new LinkedList<String>();
@@ -23,8 +23,8 @@ public class HrTest {
 	      {
 	    	 Lines temp=new Lines();
 	    	 temp.append(values.get(i));
-	         Header test_case = new Header(temp);
+	         Hr test_case = new Hr(temp);
 	         assertEquals(test_case.generate(),"<hr>");
-	      }   
+	      }
 	}
 }
