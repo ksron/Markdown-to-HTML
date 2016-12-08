@@ -27,27 +27,26 @@ public class generator implements MDElementVisitor{
 		a += "<html>\n"+"<body>\n"+doc.generate()+"</body>\n"+"</html>";//Generator
 		b= doc.getOutputFile();//Output file's directory & name & type
 
-		if(validateHTML(a))
+		validateHTML(a);
 			try{
 				FileWriter w_file = new FileWriter(b);
 
-				//System.out.println("\n" + a); 
+				//System.out.println("\n" + a);
 				w_file.write(a);
 				w_file.close();
 
 			}catch(IOException e){
 				e.printStackTrace();
 			}
-		else
-			System.err.println("Not a valid HTML");
+
 	}
 
 	public void visit(MDConstruct md){
 
 	}
 //public void visit_fancy(Document doc) This is for fancy version.
-	
-	private boolean validateHTML(String s){
+
+	private void validateHTML(String s){
 		InputStream in = new ByteArrayInputStream(s.getBytes(StandardCharsets.UTF_8));
 
 		Tidy tidy = new Tidy();
@@ -59,7 +58,5 @@ public class generator implements MDElementVisitor{
 
 		System.out.println("\nerrors "+tidy.getParseErrors());
 	    System.out.println("warnings "+tidy.getParseWarnings());
-
-	    return (tidy.getParseErrors() == 0 && tidy.getParseWarnings() == 0);
 	}
 }
