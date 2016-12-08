@@ -14,6 +14,7 @@ public class HeaderTest {
 	 
 	@BeforeClass
 	public static void setUpList(){
+		
 		values = new LinkedList<String>();
 		values.add("A simple h1 header\n===========");
 		values.add("A simple h2 header\n-----------");
@@ -21,19 +22,23 @@ public class HeaderTest {
 		values.add("## A simple h2 header");
 		
 		converted = new LinkedList<String>();
-		converted.add("<h1>A simple h1 header</h1>");
-		converted.add("<h2>A simple h2 header</h2>");
-		converted.add("<h3>A simple h3 header</h3>");
-		converted.add("<h2>A simple h2 header</h2>");
+		converted.add("<h1>A simple h1 header</h1>\n");
+		converted.add("<h2>A simple h2 header</h2>\n");
+		converted.add("<h3>A simple h3 header</h3>\n");
+		converted.add("<h2>A simple h2 header</h2>\n");
 	}
 	@Test
 	public void testHeader() {
 	     for(int i=0; i < values.size();i++)
 	      {
 	    	 Lines temp=new Lines();
-	    	 temp.append(values.get(i));
+	    	 if(values.get(i).contains("=")||values.get(i).contains("-")){
+	    		 temp.append(values.get(i).split("\n")[0]);
+	    		 temp.append(values.get(i).split("\n")[1]);
+	    	 }else
+	    		 temp.append(values.get(i));
 	         Header test_case = new Header(temp);
-	         assertEquals(test_case.generate(),converted.get(i));
+	         assertEquals(converted.get(i),test_case.generate());
 	      }   
 	}
 }
