@@ -27,7 +27,7 @@ public class HeaderTest {
       converted.add("<h2>A simple h2 header</h2>\n");
       converted.add("<h3>A simple h3 header</h3>\n");
       converted.add("<h2>A simple h2 header</h2>\n");
-      onverted.add("<h6>A simple h6 header</h6>\n");
+      converted.add("<h6>A simple h6 header</h6>\n");
    }
    @Test
    public void testHeader() {
