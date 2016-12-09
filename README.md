@@ -10,7 +10,7 @@ In this program, basically we call '.md' file, and decide conversion type, Outpu
 
 ```
 1. When executing through ant build script :
-  a. Enter ‘Markdown-to-HTML-master’ directory using CMD, and check the existence of ‘build.xml’. 
+  a. Change location to ROOT directory using CMD, and check the existence of ‘build.xml’. 
   b. Compile java files using commands ‘ant’.
   c. Make jar file for running. Our ant command is ‘ant make_jar’
   d. Change directory for running file. We decided location of jar file in ‘lib’ directory. ‘cd lib.’
