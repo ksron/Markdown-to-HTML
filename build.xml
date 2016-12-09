@@ -43,7 +43,7 @@
    </target>
 
    <target name="make_jar" depends="build" description="making a jar file for running MDconverter">
-      <jar destfile="${lib.dir}\md_html.jar" basedir="${build.dir}">
+      <jar destfile="${lib.dir}\md_html_converter.jar" basedir="${build.dir}">
 		<manifest>
 			<attribute name="Main-Class" value="mdconverter.MDConverter" />
 			<attribute name="Class-Path" value="jtidy.jar hamcrest-core.jar junit.jar" />
@@ -54,12 +54,18 @@
 
    <target name="make_doc" depends="init" description="making javadocs">
       <javadoc destdir="${javadoc.dir}">
-		 <fileset dir="${src.dir}\" defaultexcludes="yes">
+		 <fileset dir="${src.dir}" defaultexcludes="yes">
 		     <include name="Node/"/>
 			 <include name="Token/"/>
 			 <include name="util/"/>
 			 <include name="mdconverter/"/>
 		 </fileset>
+      	<classpath>
+      		<fileset dir="${lib.dir}">
+      			<include name="jtidy.jar"/>
+      		</fileset>
+      	</classpath>
+      	 
 	  </javadoc>
    </target>
 
@@ -92,33 +98,30 @@
 		<delete file="systemtest.html" />
 	</target>
 
-<target name="cov-test" depends ="build" description="This is for checking coverage Test">
-
+	<target name="cov-test" depends ="build" description="This is for checking coverage Test">
 		<jacoco:coverage>
 			<junit showoutput="false" printsummary="on" enabletestlistenerevents="true" fork="true" forkmode="perBatch">
-			<classpath path="${build.dir}" />
-			<classpath path="${build.dir}/test" />
-			<classpath path="lib/junit.jar" />
-			<classpath path="lib/hamcrest-core.jar" />
-			<classpath path="lib/jtidy.jar" />
-			<formatter type="plain" usefile="false" />
-			<batchtest>
-			<fileset dir="${build.dir}/Test">
-				<include name="**/*Test.class" />
-			</fileset>
-			</batchtest>
-		</junit>
+				<classpath path="${build.dir}" />
+				<classpath path="${build.dir}/test" />
+				<classpath path="lib/junit.jar" />
+				<classpath path="lib/hamcrest-core.jar" />
+				<classpath path="lib/jtidy.jar" />
+				<formatter type="plain" usefile="false" />
+				<batchtest>
+				<fileset dir="${build.dir}/Test">
+					<include name="**/*Test.class" />
+				</fileset>
+				</batchtest>
+			</junit>
 		</jacoco:coverage>
-
 	</target>
 
 	<target name="cov-report" depends="cov-test">
 		<jacoco:report>
-
 			<executiondata>
 				<fileset file="jacoco.exec" />
 			</executiondata>
-
+	
 			<structure name="Coverage-Report">
 				<classfiles>
 					<fileset dir="classes">
@@ -130,7 +133,7 @@
 					<fileset dir="src" />
 				</sourcefiles>	
 			</structure>
-
+	
 			<html destdir="report" />
 		</jacoco:report>
 	</target>
