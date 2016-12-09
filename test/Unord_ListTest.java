@@ -20,9 +20,9 @@ public class Unord_ListTest {
       values.add("- A very simple\n- Unordered list");
 
       converted = new LinkedList<String>();
-      converted.add("<ul><li>A very simple</li></ul>");
-      converted.add("<ul><li>A very simple</li></ul>");
-      converted.add("<ul><li>A very simple</li></ul>");
+      converted.add("<ul><li>A very simple</li><li>Unordered list</li></ul>");
+      converted.add("<ul><li>A very simple</li><li>Unordered list</li></ul>");
+      converted.add("<ul><li>A very simple</li><li>Unordered list</li></ul>");
    }
    @Test
    public void testUnOrdList() {
@@ -34,7 +34,7 @@ public class Unord_ListTest {
            temp.append(temp_list[1]);
 
             Unord_List test_case = new Unord_List(temp);
-            assertEquals(test_case.generate(),converted.get(i));
+            assertEquals(converted.get(i), test_case.generate());
          }
    }
 }
