@@ -82,6 +82,7 @@
    </target>
 
    	<target name="test" depends ="build" description="This is for checking unit Test, systemtest.html will delete for cov-report">
+		<delete file="systemtest.html" />
 		<junit showoutput="false" printsummary="on" enabletestlistenerevents="true" fork="true" forkmode="perBatch">
 			<classpath path="${build.dir}" />
 			<classpath path="${build.dir}/test" />
@@ -99,6 +100,7 @@
 	</target>
 
 	<target name="cov-test" depends ="build" description="This is for checking coverage Test">
+		<delete file="systemtest.html" />
 		<jacoco:coverage>
 			<junit showoutput="false" printsummary="on" enabletestlistenerevents="true" fork="true" forkmode="perBatch">
 				<classpath path="${build.dir}" />
