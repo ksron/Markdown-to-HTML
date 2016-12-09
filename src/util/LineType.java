@@ -9,7 +9,7 @@ public enum LineType {
 	BAR_LINE("[ ]{0,3}([-]+\\s*){3,}\\s*"),
 	SETEXT_HEADER("[ ]{0,3}([=]+\\s*){3,}\\s*"),
 	HR("^[ ]{0,3}([*|-]+\\s*){3,}\\s*$"),
-	LINKADDR("[ ]{0,3}\\[(\\w|\\d)*\\]:[ |\\t]*(.*)([ ][\\\"|\\\'|\\(](.*)[\\\"|\\\'|\\)])?\\s*"),
+	LINKADDR("[ ]{0,3}\\[(\\w|\\d|[ ])+\\]:[ |\\t]*(.*)([ ][\\\"|\\\'|\\(](.*)[\\\"|\\\'|\\)])?\\s*"),
 	EMPTY("^\\s*$"),
 	BLOCK("^.*");
 	
@@ -29,6 +29,9 @@ public enum LineType {
 		else if(line.matches(LineType.QUOTED.pattern)){
 			return LineType.QUOTED;
 		}
+		else if(line.matches(LineType.BAR_LINE.pattern)){
+			return LineType.BAR_LINE;
+		}
 		else if(line.matches(LineType.HR.pattern)){
 			return LineType.HR;
 		}
@@ -43,9 +46,6 @@ public enum LineType {
 		}
 		else if(line.matches(LineType.SETEXT_HEADER.pattern)){
 			return LineType.SETEXT_HEADER;
-		}
-		else if(line.matches(LineType.BAR_LINE.pattern)){
-			return LineType.BAR_LINE;
 		}
 		else if(line.matches(LineType.LINKADDR.pattern)){
 			return LineType.LINKADDR;
