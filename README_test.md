@@ -11,15 +11,13 @@ In this program, basically we call '.md' file, and decide conversion type, Outpu
 
      this is example
 
-> dududu
-> > dididi
-> > dididi
-> dididi
->
->	this code
->	this code2
-this
-
+> 1
+> 2
+> > 11
+> > 22
+>  
+> 33
+> 44
 *******
 ## Tool's Command:
 
@@ -82,7 +80,7 @@ examples)
 __Caution__: Basically tool searches file in 'Tool's directory'. And if there is a same output's name in same directory, this tool will ask you a question that overwrite or not. if you put 'y or Y' command, it will overwrite, if you put 'n' or 'N' command, it will not overwrite and terminate. 
  
 _Handong Global University.
-Software Engineering Term pr&oject first assignment.
+Software Engineering Term project first assignment.
 Group S_
 
 1. Our Team
@@ -96,22 +94,14 @@ Group S_
 * Is Doing
 * Such a great job
 
-this is  ' inline code ' end\" <http://example.com>.
-
-> this
-> ### header3
-> **********
-> [id]: /path/one/
->
-> this
-> ====
+this is  ' inline code ' end\" <http://example.com/>.
 
 
 : &, &amp, &lt, &gt, <, >,  ><, <>, ", '
 
 > Help me sandklfn
 asndlfknasdlfkn[Google][]asdlkf
-nasdlfandslfkn [this is](well inline)
+nasdlfandslfkn [this is](path/one/two)
 
 1. Our team
   1. our Team
