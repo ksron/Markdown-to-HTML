@@ -20,12 +20,14 @@ public class HeaderTest {
       values.add("A simple h2 header\n-----------");
       values.add("### A simple h3 header");
       values.add("## A simple h2 header");
+      values.add(" ######## A simple h6 header");
 
       converted = new LinkedList<String>();
       converted.add("<h1>A simple h1 header</h1>\n");
       converted.add("<h2>A simple h2 header</h2>\n");
       converted.add("<h3>A simple h3 header</h3>\n");
       converted.add("<h2>A simple h2 header</h2>\n");
+      onverted.add("<h6>A simple h6 header</h6>\n");
    }
    @Test
    public void testHeader() {
