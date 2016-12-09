@@ -19,8 +19,8 @@ public class Ord_ListTest {
       values.add("4. This is a\n8. Very simple\n1. Ordered list.");
 
       converted = new LinkedList<String>();
-      converted.add("<ol><li>This is a</li><li>Very simple</li></ol>");
-      converted.add("<ol><li>This is a</li><li>Very simple</li></ol>");
+      converted.add("<ol><li>This is a</li><li>Very simple</li><li>Ordered list.</li></ol>");
+      converted.add("<ol><li>This is a</li><li>Very simple</li><li>Ordered list.</li></ol>");
    }
    @Test
    public void testOrdList() {
@@ -33,7 +33,7 @@ public class Ord_ListTest {
            temp.append(temp_list[2]);
 
             Ord_List test_case = new Ord_List(temp);
-            assertEquals(test_case.generate(),converted.get(i));
+            assertEquals(converted.get(i), test_case.generate());
          }
    }
 }
