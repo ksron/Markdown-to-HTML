@@ -17,14 +17,14 @@
    <property name="report.dir" location="report"/>
    <property name="test.dir" location="test" />
 
-   <target name="init" description="creating classes and javadoc directories if deleted">
+   <target name="init" description="creating classes, javadoc, report, and Test directories">
       <mkdir dir="${build.dir}"/>
       <mkdir dir="${javadoc.dir}"/>
 	  <mkdir dir="${report.dir}"/>
 	  <mkdir dir="${build.dir}/Test" />
    </target>
 
-   <target name="build" depends="init" description="project build">
+   <target name="build" depends="init" description="project build with Test case">
       <javac srcdir="${src.dir}" destdir="${build.dir}" debug="true" includeantruntime="false">
 			<classpath path="classes" />
 			<classpath path="lib/junit.jar" />
@@ -42,7 +42,7 @@
 
    </target>
 
-   <target name="make_jar" depends="build" description="making a jar file">
+   <target name="make_jar" depends="build" description="making a jar file for running MDconverter">
       <jar destfile="${lib.dir}\md_html.jar" basedir="${build.dir}">
 		<manifest>
 			<attribute name="Main-Class" value="mdconverter.MDConverter" />
@@ -75,7 +75,7 @@
       <delete dir="${report.dir}"/>
    </target>
 
-   	<target name="test" depends ="build" description="This is for checking unit Test">
+   	<target name="test" depends ="build" description="This is for checking unit Test, systemtest.html will delete for cov-report">
 		<junit showoutput="false" printsummary="on" enabletestlistenerevents="true" fork="true" forkmode="perBatch">
 			<classpath path="${build.dir}" />
 			<classpath path="${build.dir}/test" />
@@ -89,6 +89,7 @@
 			</fileset>
 			</batchtest>
 		</junit>
+		<delete file="systemtest.html" />
 	</target>
 
 <target name="cov-test" depends ="build" description="This is for checking coverage Test">
