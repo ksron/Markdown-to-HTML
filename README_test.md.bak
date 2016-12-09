@@ -17,11 +17,9 @@ In this program, basically we call '.md' file, and decide conversion type, Outpu
 > # header 1 
 > 33
 > 44
-> 55
->  	this is code
->  	this is code2
-> 66
-> [2]: Logo2.png
+> [3]: Logo2.png
+> 	this is code
+> 	this is code2
 
 *******
 ## Tool's Command:
