@@ -9,7 +9,7 @@ __A Jar file(md_html.jar)__ is a tool for Markdown Converter.
 In this program, basically we call '.md' file, and decide conversion type, Output's name, Output's style, and Where we saves. Now, our steps of developing is not enough for showing all options. Basically we design converter **'.md' -> '.html'**
 
 ```
-When executing through ant build script :
+1. When executing through ant build script :
 a. Enter ‘Markdown-to-HTML-master’ directory using CMD, and check the existence of ‘build.xml’. 
 b. Compile java files using commands ‘ant’.
 c. Make jar file for running. Our ant command is ‘ant make_jar’
@@ -20,7 +20,7 @@ ex) java -jar md_html.jar README.md
    java -jar md_html.jar ../README.md -o result -f html -d ../ -s plain
    java -jar md_html.jar -h
    
-When executing through eclipse Java compiler__
+2. When executing through eclipse Java compiler__
 : Run with necessary arguments given for the options
 ```
 - - - -
