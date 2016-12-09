@@ -10,18 +10,18 @@ In this program, basically we call '.md' file, and decide conversion type, Outpu
 
 ```
 1. When executing through ant build script :
-a. Enter ‘Markdown-to-HTML-master’ directory using CMD, and check the existence of ‘build.xml’. 
-b. Compile java files using commands ‘ant’.
-c. Make jar file for running. Our ant command is ‘ant make_jar’
-d. Change directory for running file. We decided location of jar file in ‘lib’ directory. ‘cd lib.’
-e. Run jar file with right arguments that already defined. Our jar file’s name is md_html.jar. 
-java -jar md_html.jar {input_file} [options]
-ex) java -jar md_html.jar README.md
-   java -jar md_html.jar ../README.md -o result -f html -d ../ -s plain
-   java -jar md_html.jar -h
+  a. Enter ‘Markdown-to-HTML-master’ directory using CMD, and check the existence of ‘build.xml’. 
+  b. Compile java files using commands ‘ant’.
+  c. Make jar file for running. Our ant command is ‘ant make_jar’
+  d. Change directory for running file. We decided location of jar file in ‘lib’ directory. ‘cd lib.’
+  e. Run jar file with right arguments that already defined. Our jar file’s name is md_html.jar. 
+  java -jar md_html.jar {input_file} [options]
+  ex) java -jar md_html.jar README.md
+     java -jar md_html.jar ../README.md -o result -f html -d ../ -s plain
+     java -jar md_html.jar -h
    
-2. When executing through eclipse Java compiler__
-: Run with necessary arguments given for the options
+2. When executing through eclipse Java compiler
+  : Run with necessary arguments given for the options
 ```
 - - - -
 
