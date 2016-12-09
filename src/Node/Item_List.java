@@ -42,7 +42,7 @@ public abstract class Item_List extends Node{
 		this(lines);
 		setTag(start, end);
 	}
-	
+
 	public String generate()
 	{
 		String temp="";
@@ -68,7 +68,7 @@ public abstract class Item_List extends Node{
 			}
 			else
 			{
-				if(i<str_list.size()-1 && str_list.get(i+1).contains("<ol>"))
+				if(i<str_list.size()-1 && (str_list.get(i+1).contains("<ol>") || str_list.get(i+1).contains("<ul>")))
 					temp+=str_list.get(i);
 				else
 					ret_str+="<li>"+str_list.get(i)+"</li>";
