@@ -1,50 +1,79 @@
 package mdconverter;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+
+import org.w3c.tidy.Tidy;
 
 /*
- 얘가 진짜 쓰는 generator 입니다.
- visitor pattern으로 node나 token마다 다 방문해서
- String return 하는 프로그램이고, 다 html 위에 덮어 쓰는걸로 작업했습니다.
+ This is generator for visiting
+ The implementation of FANCY will be implemented later.
  */
 public class generator implements MDElementVisitor{
 
-//String filename = new option_input.filename();
-	//얘는 나중에 CLI에서 input file 체크해서 method로 return 하는 거 받아서 받아 쓰려고 만들었습니다.
+	private	String a;
+	private String b;
+
 
 	public void visit(Document doc){
-		String a;
-		String b;
-		String c;
-		String d;
-		a=doc.generate();//Generator
-		b=doc.getOutput_file();//Output file's name
-		c=doc.getOutputDir();//Output File's direction
-		d=doc.getFormat();//Output File's Style
-		try{
-			FileWriter w_file = new FileWriter(c+ "\\" +b+ "." +d);
-			
-			w_file.write("<html>\n");
-			w_file.write("<body>\n");
-			
-			w_file.write(a);		
-			
-			w_file.write("</body>\n");
-			w_file.write("</html>\n");
-			w_file.close();
-	
+		a = "<!DOCTYPE html PUBLIC \"-//IETF//DTD HTML 2.0//EN\">";
+		a += "<head><title> MDConverter </title></head>";
+		a += "<html>\n"+"<body>\n"+doc.generate()+"</body>\n"+"</html>";//Generator
+		b= doc.getOutputFile();//Output file's directory & name & type
+
+		validateHTML(a);
+			try{
+				FileWriter w_file = new FileWriter(b);
+
+				//System.out.println("\n" + a);
+				w_file.write(a);
+				w_file.close();
+
 			}catch(IOException e){
-			e.printStackTrace();
+				e.printStackTrace();
 			}
 	}
-	
+
 	public void visit(MDConstruct md){
-		
+
+	}
+	
+	//This is for fancy visit.
+	public void visit_fancy(Document doc){
+		a = "<!DOCTYPE html PUBLIC \"-//IETF//DTD HTML 2.0//EN\">";
+		a += "<head><title> MDConverter </title></head>";
+		a += "<html>\n"+"<body>\n"+doc.generate()+"<p>Fancy Version</p>"+"</body>\n"+"</html>";//Generator
+		b= doc.getOutputFile();//Output file's directory & name & type
+
+		validateHTML(a);
+			try{
+				FileWriter w_file = new FileWriter(b);
+
+				//System.out.println("\n" + a);
+				w_file.write(a);
+				w_file.close();
+
+			}catch(IOException e){
+				e.printStackTrace();
+			}
 	}
 
-	@Override
-	public void visit(Mconvert con) {
-		
+	
+	private void validateHTML(String s){
+		InputStream in = new ByteArrayInputStream(s.getBytes(StandardCharsets.UTF_8));
+
+		Tidy tidy = new Tidy();
+		tidy.setForceOutput(true);
+
+		//ignore output
+		tidy.parse(in, new ByteArrayOutputStream());
+		tidy.setQuiet(true);
+
+		System.out.println("\nerrors "+tidy.getParseErrors());
+	    System.out.println("warnings "+tidy.getParseWarnings());
 	}
 }

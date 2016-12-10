@@ -5,6 +5,6 @@ public interface MDElementVisitor{
 
 	public void visit(MDConstruct mdConstruct);
 	public void visit(Document doc);
-	public void visit(Mconvert con);
+	public void visit_fancy(Document doc);
 
 }
