@@ -45,7 +45,8 @@ public class generator implements MDElementVisitor{
 	//This is for fancy visit.
 	public void visit_fancy(Document doc){
 		a = "<!DOCTYPE html PUBLIC \"-//IETF//DTD HTML 2.0//EN\">";
-		a += "<head><title> MDConverter </title></head>";
+		a += "<head><title> MDConverter </title></head>"
+				+ "<link rel = 'stylesheet' type = 'text/css' href = 'lib/fancy.css'/>";
 		a += "<html>\n"+"<body>\n"+doc.generate()+"<p>Fancy Version</p>"+"</body>\n"+"</html>";//Generator
 		b= doc.getOutputFile();//Output file's directory & name & type
 
