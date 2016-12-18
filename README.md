@@ -5,7 +5,7 @@ Mark Down Converter
 - - - -
 ###How To Use?
 
-__A Jar file(md_html.jar)__ is a tool for Markdown Converter.
+__A Jar file(md_html_converter.jar)__ is a tool for Markdown Converter.
 In this program, basically we call '.md' file, and decide conversion type, Output's name, Output's style, and Where we saves. Now, our steps of developing is not enough for showing all options. Basically we design converter **'.md' -> '.html'**
 
 
@@ -16,11 +16,11 @@ __1. When executing through ant build script :__
   b. Compile java files using commands ‘ant’.
   c. Make jar file for running. Our ant command is ‘ant make_jar’
   d. Change directory for running file. We decided location of jar file in ‘lib’ directory. ‘cd lib.’
-  e. Run jar file with right arguments that already defined. Our jar file’s name is md_html.jar. 
+  e. Run jar file with right arguments that already defined. Our jar file’s name is md_html_converter.jar. 
   java -jar md_html.jar {input_file} [options]
-  ex) java -jar md_html.jar README.md
-     java -jar md_html.jar ../README.md -o result -f html -d ../ -s plain
-     java -jar md_html.jar -h
+  ex) java -jar md_html_converter.jar README.md
+     java -jar md_html_converter.jar ../README.md -o result -f html -d ../ -s plain
+     java -jar md_html_converter.jar -h
 ```   
 
 __2. When executing through eclipse Java compiler__
