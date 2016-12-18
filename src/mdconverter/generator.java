@@ -15,13 +15,11 @@ import org.w3c.tidy.Tidy;
  */
 public class generator implements MDElementVisitor{
 
-
+	private	String a;
 	private String b;
 
 
 	public void visit(Document doc){
-		String a;
-
 		a = "<!DOCTYPE html PUBLIC \"-//IETF//DTD HTML 2.0//EN\">";
 		a += "<head><title> MDConverter </title></head>";
 		a += "<html>\n"+"<body>\n"+doc.generate()+"</body>\n"+"</html>";//Generator
@@ -38,14 +36,34 @@ public class generator implements MDElementVisitor{
 			}catch(IOException e){
 				e.printStackTrace();
 			}
-
 	}
 
 	public void visit(MDConstruct md){
 
 	}
-//public void visit_fancy(Document doc) This is for fancy version.
+	
+	//This is for fancy visit.
+	public void visit_fancy(Document doc){
+		a = "<!DOCTYPE html PUBLIC \"-//IETF//DTD HTML 2.0//EN\">";
+		a += "<head><title> MDConverter </title></head>"
+				+ "<link rel = 'stylesheet' type = 'text/css' href = 'lib/fancy.css'/>";
+		a += "<html>\n"+"<body>\n"+doc.generate()+"<p>Fancy Version</p>"+"</body>\n"+"</html>";//Generator
+		b= doc.getOutputFile();//Output file's directory & name & type
 
+		validateHTML(a);
+			try{
+				FileWriter w_file = new FileWriter(b);
+
+				//System.out.println("\n" + a);
+				w_file.write(a);
+				w_file.close();
+
+			}catch(IOException e){
+				e.printStackTrace();
+			}
+	}
+
+	
 	private void validateHTML(String s){
 		InputStream in = new ByteArrayInputStream(s.getBytes(StandardCharsets.UTF_8));
 
