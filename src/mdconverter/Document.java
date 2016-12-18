@@ -62,7 +62,12 @@ public class Document implements MDElement{
 	}
 
 	public void accept(MDElementVisitor md){
+		
+		if(this.getStyle().equals("plain")){
 		md.visit(this);
+		}else if(this.getStyle().equals("fancy")){
+		md.visit_fancy(this);
+		}	
 	}
 
 }
