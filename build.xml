@@ -96,7 +96,7 @@
 			</fileset>
 			</batchtest>
 		</junit>
-		<delete file="systemtest.html" />
+		
 	</target>
 
 	<target name="cov-test" depends ="build" description="This is for checking coverage Test">
