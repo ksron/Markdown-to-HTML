@@ -1,4 +1,4 @@
-![logo](Logo2.png)
+![logo](Logo2.png)  
 Mark Down Converter
 ===========
 **Markdown Converter** is for translating '.md' file to various types of file. It will convert Markdown to HTML, SLIDE HTML, etc.
