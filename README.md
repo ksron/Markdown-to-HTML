@@ -3,7 +3,7 @@ Mark Down Converter
 ===========
 **Markdown Converter** is for translating '.md' file to various types of file. It will convert Markdown to HTML, SLIDE HTML, etc.
 - - - -
-###How To Use?
+### How To Use?
 
 __A Jar file(md_html_converter.jar)__ is a tool for Markdown Converter.
 In this program, basically we call '.md' file, and decide conversion type, Output's name, Output's style, and Where we saves. Now, our steps of developing is not enough for showing all options. Basically we design converter **'.md' -> '.html'**
@@ -28,7 +28,7 @@ __2. When executing through eclipse Java compiler__
 
 - - - -
 
-##Tool's Command:
+## Tool's Command:
 ```
 mdconverter (-h) 
             {input_file}
